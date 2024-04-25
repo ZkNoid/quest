@@ -10,7 +10,7 @@ const roboto = Roboto({
   subsets: ['latin'],
 })
 
-export const arame = localFont({
+const arame = localFont({
   variable: '--arame',
   display: 'swap',
   src: [

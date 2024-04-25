@@ -73,7 +73,7 @@ export const Section3 = () => {
           </div>
         </div>
       </div>
-      <div className="w-[100vw] h-[3.75vw] bg-green text-dark text-[2vw] flex items-center px-[2.75vw]">
+      <div className="w-[100vw] h-[3.75vw] bg-green text-dark text-[2vw] flex items-center justify-center">
         go to the moon with zknoid <Dots />
         go to the moon with zknoid <Dots />
         go to the moon with zknoid
