@@ -7,11 +7,22 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      green: "#D4FF33",
+      blue: "#3A39FF",
+      red: "#FF5B23",
+      violet: "#DCB8FF",
+      dark: "#141414",
+      white: "#FFFCF5"
+
+    },
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      boxShadow: {
+        main: "6px 6px 0px 0px black",
+      },
+      fontFamily: {
+        roboto: ['var(--roboto)'],
+        arame: ['var(--arame)'],
       },
     },
   },
