@@ -18,7 +18,7 @@ const config: Config = {
     },
     extend: {
       boxShadow: {
-        main: "6px 6px 0px 0px black",
+        main: "0.375vw 0.375vw 0px 0px black",
       },
       fontFamily: {
         roboto: ['var(--roboto)'],
