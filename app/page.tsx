@@ -6,7 +6,7 @@ import { Section3 } from "./components/Section3";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center max-w-[100vw] overflow-hidden">
+    <main className="flex min-h-screen flex-col items-center max-w-[100vw] overflow-clip">
       <Header />
       <Section1 />
       <Section2 />
