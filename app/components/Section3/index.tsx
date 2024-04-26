@@ -52,7 +52,7 @@ export const Section3 = () => {
               className="absolute w-[39.415625vw] left-[-5.3125vw] top-[-1.5625vw] z-1 max-w-none"
             ></Image>
             <p className="text-[4.375vw] z-10">300 $MINA</p>
-            <p className="text-[1.5vw] font-roboto z-10">
+            <p className="text-[1.5vw] font-roboto z-10 text-center">
               Will be divided between from 1 to 5 people who will complete all
               two levels of tasks: Main and Additional. The winners from this
               category will be selected by the team.
@@ -66,7 +66,7 @@ export const Section3 = () => {
             ></Image>
 
             <p className="text-[4.375vw] z-10">200 $MINA</p>
-            <p className="text-[1.5vw] font-roboto z-10">
+            <p className="text-[1.5vw] font-roboto z-10 text-center">
               Will be shared among all participants of the testnet, who will
               complete the tasks of the Main part.
             </p>

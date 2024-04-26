@@ -54,7 +54,7 @@ const TaskSection = ({
       <div className="flex flex-col gap-2 font-roboto">
         {tasks.map((x, i) => (
           <div
-            className="w-[34.375vw] bg-green text-dark text-[1vw] px-[1.063vw] rounded-[0.313vw] whitespace-pre-line relative"
+            className="w-[34.375vw] bg-green text-dark text-[1vw] px-[1.063vw] py-[0.938vw] rounded-[0.313vw] whitespace-pre-line relative"
             key={i}
           >
             {x}
