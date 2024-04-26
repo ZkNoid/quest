@@ -14,11 +14,11 @@ const config: Config = {
       violet: "#DCB8FF",
       dark: "#141414",
       white: "#FFFCF5"
-
     },
     extend: {
       boxShadow: {
         main: "0.375vw 0.375vw 0px 0px black",
+        mainWhite: "0.375vw 0.375vw 0px 0px white",
       },
       fontFamily: {
         roboto: ['var(--roboto)'],
