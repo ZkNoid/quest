@@ -52,9 +52,35 @@ const TaskSection = ({
         </div>
       </div>
       <div className="flex flex-col gap-2 font-roboto">
-        {tasks.map((x) => (
-          <div className="w-[34.375vw] bg-green text-dark text-[1vw] px-[1.063vw] rounded-[0.313vw] whitespace-pre-line">
+        {tasks.map((x, i) => (
+          <div
+            className="w-[34.375vw] bg-green text-dark text-[1vw] px-[1.063vw] rounded-[0.313vw] whitespace-pre-line relative"
+            key={i}
+          >
             {x}
+            {last && (
+              <div
+                className={cn(
+                  "pl-[0.25vw] w-[4.125vw] h-[4.125vw] border-white absolute bottom-0 right-0 m-[0.625vw] rounded-[0.6vw] shadow-main border-[0.3125vw] flex items-center justify-center cursor-pointer",
+                  "bg-green "
+                )}
+              >
+                <svg
+                  className="w-[1.5vw]"
+                  width="24"
+                  height="39"
+                  viewBox="0 0 24 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 2L19.5 19.5L2 37"
+                    stroke={2 % 2 == 1 ? "#FFFCF5" : "#141414"}
+                    stroke-width="5"
+                  />
+                </svg>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -127,7 +153,9 @@ export const Section5 = () => {
 
             At the end of your ZkNoid journey, we would like you to fill out a form to give our team your honest feedback on your game experience during the testnet. Let us know what you liked or didn't like about it. We would greatly appreciate it if you shared your thoughts and ideas with us.
 
-            After filling out the form, all you need to do is wait for the testnet airdrop to be completed after the official testnet has finished.`,
+            After filling out the form, all you need to do is wait for the 
+            testnet airdrop to be completed after the official testnet has 
+            finished.`,
           ]}
           last={true}
         />
