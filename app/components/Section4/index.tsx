@@ -88,7 +88,7 @@ export const Section4 = () => {
       <div className="w-full text-[4.3vw] flex justify-between items-end">
         <div>
           <p className="flex gap-[1.0625vw]">
-            YOUR <Image src={Lightnings} alt="Lightnings"></Image>
+            YOUR <Image src={Lightnings} alt="Lightnings" className="w-[7.062vw]"></Image>
           </p>
           <p className="leading-none">TASKS PROGRESS</p>
         </div>
