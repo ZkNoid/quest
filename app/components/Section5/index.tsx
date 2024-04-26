@@ -1,8 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { useState } from "react";
 
 const TaskSection = ({
   id,
@@ -89,10 +87,6 @@ const TaskSection = ({
 };
 
 export const Section5 = () => {
-  const connected = true;
-
-  const [progress, setProgress] = useState(0);
-
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
       <div className="w-full text-[4.3vw] flex justify-between items-end pb-[2.5vw]">
@@ -160,8 +154,6 @@ export const Section5 = () => {
           last={true}
         />
       </div>
-
-      <div className="pt-[10vw]"></div>
     </section>
   );
 };
