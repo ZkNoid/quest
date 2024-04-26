@@ -1,7 +1,11 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Lightnings from "./assets/lightnings.svg";
+import Vsign from "./assets/v-sign.svg";
 
 import Image from "next/image";
+import { useState } from "react";
 
 const ConnectWalletButton = () => {
   return (
@@ -23,7 +27,11 @@ const ConnectWalletButton = () => {
   );
 };
 
-const Progress = ({ step }: { step: number }) => {
+const Progress = ({ step: stepRaw }: { step: number }) => {
+  const [additionalSteps, setAdditionalSteps] = useState(0);
+
+  const step = (stepRaw + additionalSteps) % 9;
+
   const percents = [11, 22, 33, 44, 55, 66, 77, 88, 100];
   const percent = percents[step];
   const w = {
@@ -63,7 +71,13 @@ const Progress = ({ step }: { step: number }) => {
   ][step];
 
   return (
-    <div className="h-[2.25vw] w-full bg-gradient-to-r from-[#FF5B238F] to-[#D4FF338F] rounded-[0.313vw] my-[2.5vw]">
+    <div className="h-[2.25vw] w-full bg-gradient-to-r from-[#FF5B238F] to-[#D4FF338F] rounded-[0.313vw] mt-[2.5vw] relative">
+      <Image
+        src={Vsign}
+        alt="V-sign"
+        className="absolute right-0 w-[13.188vw] bottom-0 cursor-pointer"
+        onClick={() => setAdditionalSteps(additionalSteps + 1)}
+      />
       <div
         className={cn(
           "h-full rounded-[0.313vw] w-[11%]",
@@ -83,12 +97,19 @@ const Progress = ({ step }: { step: number }) => {
 export const Section4 = () => {
   const connected = true;
 
+  const [progress, setProgress] = useState(0);
+
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
       <div className="w-full text-[4.3vw] flex justify-between items-end">
         <div>
           <p className="flex gap-[1.0625vw]">
-            YOUR <Image src={Lightnings} alt="Lightnings" className="w-[7.062vw]"></Image>
+            YOUR{" "}
+            <Image
+              src={Lightnings}
+              alt="Lightnings"
+              className="w-[7.062vw]"
+            ></Image>
           </p>
           <p className="leading-none">TASKS PROGRESS</p>
         </div>
@@ -98,8 +119,7 @@ export const Section4 = () => {
           </div>
         )}
       </div>
-      <Progress step={3}></Progress>
-      <div className="pt-[10vw]"></div>
+      <Progress step={3} />
     </section>
   );
 };
