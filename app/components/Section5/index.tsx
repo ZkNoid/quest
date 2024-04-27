@@ -14,73 +14,75 @@ const TaskSection = ({
   last?: boolean;
 }) => {
   return (
-    <div className="w-full grid grid-cols-[1fr_.25fr_1fr] items-start">
-      <div className="w-full flex items-center text-[3.125vw] gap-[0.625vw]">
-        <div className="bg-green w-[2.5vw] h-[2.5vw] rounded-[0.313vw] flex items-center justify-center text-dark">
-          {id}
-        </div>
-        {name}
-      </div>
-      <div className="h-full">
-        <div className="flex flex-col h-full items-center w-[1.875vw] relative">
-          <svg
-            width="30"
-            height="31"
-            viewBox="0 0 30 31"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-[1.875vw] h-[1.875vw]"
-          >
-            <rect
-              x="1"
-              y="1.7627"
-              width="28"
-              height="28"
-              rx="4"
-              stroke="#D4FF33"
-              stroke-width="2"
-            />
-          </svg>
-          <div
-            className={cn(
-              "w-[1px] bg-green absolute top-[1.875vw]",
-              last ? "h-[85%]" : "h-[calc(100%+2.5vw)]"
-            )}
-          ></div>
-        </div>
-      </div>
-      <div className="flex flex-col gap-2 font-roboto">
-        {tasks.map((x, i) => (
-          <div
-            className="w-[34.375vw] bg-green text-dark text-[1vw] px-[1.063vw] py-[0.938vw] rounded-[0.313vw] whitespace-pre-line relative"
-            key={i}
-          >
-            {x}
-            {last && (
-              <div
-                className={cn(
-                  "pl-[0.25vw] w-[4.125vw] h-[4.125vw] border-white absolute bottom-0 right-0 m-[0.625vw] rounded-[0.6vw] shadow-main border-[0.3125vw] flex items-center justify-center cursor-pointer",
-                  "bg-green "
-                )}
-              >
-                <svg
-                  className="w-[1.5vw]"
-                  width="24"
-                  height="39"
-                  viewBox="0 0 24 39"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 2L19.5 19.5L2 37"
-                    stroke={2 % 2 == 1 ? "#FFFCF5" : "#141414"}
-                    stroke-width="5"
-                  />
-                </svg>
-              </div>
-            )}
+    <div>
+      <div className="w-full grid grid-cols-[1fr_.25fr_1fr] items-start">
+        <div className="w-full flex items-center text-[3.125vw] gap-[0.625vw]">
+          <div className="bg-green w-[2.5vw] h-[2.5vw] rounded-[0.313vw] flex items-center justify-center text-dark">
+            {id}
           </div>
-        ))}
+          {name}
+        </div>
+        <div className="h-full">
+          <div className="flex flex-col h-full items-center w-[1.875vw] relative">
+            <svg
+              width="30"
+              height="31"
+              viewBox="0 0 30 31"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-[1.875vw] h-[1.875vw]"
+            >
+              <rect
+                x="1"
+                y="1.7627"
+                width="28"
+                height="28"
+                rx="4"
+                stroke="#D4FF33"
+                stroke-width="2"
+              />
+            </svg>
+            <div
+              className={cn(
+                "w-[1px] bg-green absolute top-[1.875vw]",
+                last ? "h-[85%]" : "h-[calc(100%+2.5vw)]"
+              )}
+            ></div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 font-roboto">
+          {tasks.map((x, i) => (
+            <div
+              className="w-[34.375vw] bg-green text-dark text-[1vw] px-[1.063vw] py-[0.938vw] rounded-[0.313vw] whitespace-pre-line relative"
+              key={i}
+            >
+              {x}
+              {last && (
+                <div
+                  className={cn(
+                    "pl-[0.25vw] w-[4.125vw] h-[4.125vw] border-white absolute bottom-0 right-0 m-[0.625vw] rounded-[0.6vw] shadow-main border-[0.3125vw] flex items-center justify-center cursor-pointer",
+                    "bg-green "
+                  )}
+                >
+                  <svg
+                    className="w-[1.5vw]"
+                    width="24"
+                    height="39"
+                    viewBox="0 0 24 39"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L19.5 19.5L2 37"
+                      stroke={"#141414"}
+                      stroke-width="5"
+                    />
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
