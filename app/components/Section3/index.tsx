@@ -1,8 +1,67 @@
+"use client";
+
 import DecorationLeft from "./assets/decoration-left.svg";
 import DecorationRight from "./assets/decoration-right.svg";
 import FlyerMiddle from "./assets/flyer-middle.svg";
 
 import Image from "next/image";
+import { ReactNode, useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionValue,
+  useVelocity,
+  useAnimationFrame,
+} from "framer-motion";
+import { wrap } from "@motionone/utils";
+
+interface ParallaxProps {
+  children: ReactNode;
+  baseVelocity: number;
+}
+
+function ParallaxText({ children, baseVelocity = 10 }: ParallaxProps) {
+  const baseX = useMotionValue(0);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 50,
+    stiffness: 400,
+  });
+  const velocityFactor = useTransform(smoothVelocity, [0, 2000], [0, 5], {
+    clamp: false,
+  });
+
+  const x = useTransform(baseX, (v) => `${wrap(-35.35, -2.4, v)}vw`);
+
+  const directionFactor = useRef<number>(1);
+  useAnimationFrame((t, delta) => {
+    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+
+    if (velocityFactor.get() < 0) {
+      directionFactor.current = -1;
+    } else if (velocityFactor.get() > 0) {
+      directionFactor.current = 1;
+    }
+
+    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+
+    baseX.set(baseX.get() + moveBy);
+  });
+  return (
+    <motion.div className="scroller h-full" style={{ x }}>
+      <span>{children} </span>
+      <span>{children} </span>
+      <span>{children} </span>
+      <span>{children} </span>
+      <span>{children} </span>
+      <span>{children} </span>
+      <span>{children} </span>
+    </motion.div>
+  );
+}
 
 const Dots = () => (
   <svg
@@ -29,6 +88,8 @@ const Dots = () => (
 );
 
 export const Section3 = () => {
+  const { scrollYProgress } = useScroll();
+
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
       <div className="w-full text-[4.3vw]">
@@ -73,10 +134,15 @@ export const Section3 = () => {
           </div>
         </div>
       </div>
-      <div className="w-[100vw] h-[3.75vw] bg-green text-dark text-[2vw] flex items-center justify-center">
-        go to the moon with zknoid <Dots />
-        go to the moon with zknoid <Dots />
-        go to the moon with zknoid
+      <div className="w-[100vw] h-[3.75vw] bg-green text-dark text-[2vw] relative">
+        <ParallaxText>
+          <div className="w-[200vw] h-full flex items-center absolute pl-10">
+            go to the moon with zknoid <Dots />
+            go to the moon with zknoid <Dots />
+            go to the moon with zknoid <Dots />
+            go to the moon with zknoid <Dots />
+          </div>
+        </ParallaxText>
       </div>
     </section>
   );
