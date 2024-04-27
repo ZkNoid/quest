@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import Image from "next/image";
@@ -147,7 +149,17 @@ export const Section6 = () => {
       </div>
 
       <div className="pt-[10vw] w-full flex justify-end text-[1.25vw] pb-[2.969vw] ">
-        <div className="flex items-center text-green cursor-pointer gap-[0.625vw]">
+        <div
+          className="flex items-center text-green cursor-pointer gap-[0.625vw]"
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+              /* you can also use 'auto' behaviour 
+               in place of 'smooth' */
+            });
+          }}
+        >
           BACK TO TOP{" "}
           <svg
             width="22"
