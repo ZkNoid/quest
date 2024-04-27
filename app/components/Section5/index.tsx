@@ -68,26 +68,28 @@ const TaskSection = ({
             >
               {x}
               {last && (
-                <div
-                  className={cn(
-                    "pl-[0.25vw] w-[4.125vw] h-[4.125vw] border-white absolute bottom-0 right-0 m-[0.625vw] rounded-[0.6vw] shadow-main border-[0.3125vw] flex items-center justify-center cursor-pointer",
-                    "bg-green hover:shadow-none hover:font-black"
-                  )}
-                >
-                  <svg
-                    className="w-[1.5vw]"
-                    width="24"
-                    height="39"
-                    viewBox="0 0 24 39"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                <div className="absolute w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group bottom-0 right-0 m-[0.625vw]">
+                  <div
+                    className={cn(
+                      "pl-[0.25vw] w-[4.125vw] h-[4.125vw] border-white rounded-[0.6vw] shadow-main border-[0.3125vw] flex items-center justify-center cursor-pointer",
+                      "bg-green hover:shadow-none hover:font-black"
+                    )}
                   >
-                    <path
-                      d="M2 2L19.5 19.5L2 37"
-                      stroke={"#141414"}
-                      stroke-width="5"
-                    />
-                  </svg>
+                    <svg
+                      className="w-[1.5vw]"
+                      width="24"
+                      height="39"
+                      viewBox="0 0 24 39"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 2L19.5 19.5L2 37"
+                        stroke={"#141414"}
+                        stroke-width="5"
+                      />
+                    </svg>
+                  </div>
                 </div>
               )}
             </div>

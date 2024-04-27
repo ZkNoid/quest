@@ -131,8 +131,10 @@ export const Section6 = () => {
                 placeholder="Type here your discord nickname..."
               />
             </div>
-            <div className="bg-[white] w-[97%] h-[4.375vw] rounded-[0.6vw] flex items-center justify-center shadow-main gap-[1vw] font-roboto font-regular text-[1.25vw] cursor-pointer mr-[6.25vw] text-dark hover:shadow-none hover:border hover:font-black">
-              Send my feedback
+            <div className="w-[calc(97%+0.375vw)] h-[calc(4.375vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group">
+              <div className="bg-[white] w-[97%] h-[4.375vw] rounded-[0.6vw] flex items-center justify-center shadow-main gap-[1vw] font-roboto font-regular text-[1.25vw] cursor-pointer mr-[6.25vw] text-dark group-hover:shadow-none group-hover:border group-hover:font-black">
+                Send my feedback
+              </div>
             </div>
           </Card>
         </div>
