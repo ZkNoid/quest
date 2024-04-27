@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const ConnectWalletButton = () => {
   return (
-    <div className="bg-green w-[16vw] h-[4.375vw] rounded-[0.6vw] flex items-center justify-between shadow-mainWhite font-roboto text-[1.25vw] pl-[1vw] pr-[0.4vw] cursor-pointer text-[black]">
+    <div className="bg-green w-[16vw] h-[4.375vw] rounded-[0.6vw] flex items-center justify-between shadow-mainWhite font-roboto text-[1.25vw] pl-[1vw] pr-[0.4vw] cursor-pointer text-[black] hover:shadow-none hover:font-black group">
       <div>Connect Wallet</div>
       <div className="w-[3.75vw] h-[3.75vw] rounded-[0.6vw] bg-dark flex items-center justify-center pl-[0.25vw]">
         <svg
@@ -20,7 +20,7 @@ const ConnectWalletButton = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M2 2L19.5 19.5L2 37" stroke="#fffcf5" stroke-width="5" />
+          <path d="M2 2L19.5 19.5L2 37" stroke="#fffcf5" className="hover:stroke-green" stroke-width="5" />
         </svg>
       </div>
     </div>
@@ -95,7 +95,7 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
 };
 
 export const Section4 = () => {
-  const connected = true;
+  const connected = false;
 
   const [progress, setProgress] = useState(0);
 
@@ -119,7 +119,7 @@ export const Section4 = () => {
           </div>
         )}
       </div>
-      <Progress step={3} />
+      {connected && <Progress step={3} />}
     </section>
   );
 };

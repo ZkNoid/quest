@@ -26,7 +26,7 @@ const TimerLabel = () => {
 
 const ConnectWalletButton = () => {
   return (
-    <div className="bg-[white] w-[16vw] h-[4.375vw] rounded-[0.6vw] flex items-center justify-between shadow-main font-roboto text-[1.25vw] pl-[1vw] pr-[0.4vw] cursor-pointer">
+    <div className="bg-[white] w-[16vw] h-[4.375vw] rounded-[0.6vw] flex items-center justify-between shadow-main hover:shadow-none hover:border hover:font-black font-roboto text-[1.25vw] pl-[1vw] pr-[0.4vw] cursor-pointer">
       <div>Connect Wallet</div>
       <div className="w-[3.75vw] h-[3.75vw] rounded-[0.6vw] bg-green flex items-center justify-center pl-[0.25vw]">
         <svg

@@ -71,7 +71,7 @@ const TaskSection = ({
                 <div
                   className={cn(
                     "pl-[0.25vw] w-[4.125vw] h-[4.125vw] border-white absolute bottom-0 right-0 m-[0.625vw] rounded-[0.6vw] shadow-main border-[0.3125vw] flex items-center justify-center cursor-pointer",
-                    "bg-green "
+                    "bg-green hover:shadow-none hover:font-black"
                   )}
                 >
                   <svg
