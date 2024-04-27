@@ -87,7 +87,7 @@ export const Section6 = () => {
             title="Social"
             heading="Discord & Social Media activities"
             items={[
-              "Share in any social media (twitter, telegram, reddit…) your your victory or the game process. Don’t forgot to send in our discord channel proof (link or screenshoot of your post)",
+              "Share in any social media (twitter, telegram, reddit…) your victory or the game process. Don’t forgot to send in our discord channel proof (link or screenshoot of your post)",
               "Help another participants with their issues during testnet process. We appreciate when community help each other",
               "Invite your friend to take part in the testnet",
               "Report about all bugs you found during the testnet in special chat in Discord channel",
