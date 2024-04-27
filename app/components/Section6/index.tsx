@@ -146,7 +146,24 @@ export const Section6 = () => {
         />
       </div>
 
-      <div className="pt-[10vw]"></div>
+      <div className="pt-[10vw] w-full flex justify-end text-[1.25vw] pb-[2.969vw] ">
+        <div className="flex items-center text-green cursor-pointer gap-[0.625vw]">
+          BACK TO TOP{" "}
+          <svg
+            width="22"
+            height="13"
+            viewBox="0 0 22 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 11.8975L11 1.89746L21 11.8975"
+              stroke="#D4FF33"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+      </div>
     </section>
   );
 };
