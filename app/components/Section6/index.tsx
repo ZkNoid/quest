@@ -22,12 +22,12 @@ const Card = ({
   return (
     <div
       className={cn(
-        "w-full rounded-[0.625vw] px-[0.938vw] leading-none py-[1.875vw] flex flex-col gap-[0.938vw]",
+        "w-full rounded-[0.625vw] px-[0.938vw] py-[1.875vw] flex flex-col gap-[0.938vw]",
         isWhite ? "text-white" : "text-dark",
         bg
       )}
     >
-      <p className="text-[3.125vw]">{title}</p>
+      <p className="text-[3.125vw] leading-none">{title}</p>
       <div className="p-[0.313vw]">
         <p className="text-[2vw] font-roboto leading-none pb-[1.5vw]">
           {heading}
