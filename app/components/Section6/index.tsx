@@ -1,5 +1,8 @@
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import Image from "next/image";
+import DecorationSVG from "./assets/decoration.svg";
+import GoodJob from "./assets/good-job.svg";
 
 const Card = ({
   bg,
@@ -58,7 +61,7 @@ export const Section6 = () => {
           <p className="leading-none">ADDITIONAL QUESTS</p>
         </div>
       </div>
-      <div className="grid grid-cols-3 w-full flex-col gap-[1.375vw]">
+      <div className="grid grid-cols-3 w-full flex-col gap-[1.375vw] relative">
         <div className="w-full">
           <div className="font-roboto text-[1.25vw] pb-[1.5vw]">
             Additional tasks are not part of the list required to receive the
@@ -131,6 +134,16 @@ export const Section6 = () => {
             </div>
           </Card>
         </div>
+        <Image
+          src={DecorationSVG}
+          alt=""
+          className="absolute bottom-0 w-[52.125vw] right-[-9.8vw] z-[-100]"
+        />
+        <Image
+          src={GoodJob}
+          alt=""
+          className="absolute bottom-0 w-[12.688vw] right-[-2.8vw] z-[-100]"
+        />
       </div>
 
       <div className="pt-[10vw]"></div>
