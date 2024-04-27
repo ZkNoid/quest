@@ -135,7 +135,7 @@ export const Section3 = () => {
         </div>
       </div>
       <div className="w-[100vw] h-[3.75vw] bg-green text-dark text-[2vw] relative">
-        <ParallaxText>
+        <ParallaxText baseVelocity={10}>
           <div className="w-[200vw] h-full flex items-center absolute pl-10">
             go to the moon with zknoid <Dots />
             go to the moon with zknoid <Dots />
