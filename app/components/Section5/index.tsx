@@ -6,11 +6,13 @@ const TaskSection = ({
   id,
   name,
   tasks,
+  statuses,
   last,
 }: {
   id: number;
   name: string;
   tasks: string[];
+  statuses: boolean[];
   last?: boolean;
 }) => {
   return (
@@ -38,14 +40,19 @@ const TaskSection = ({
                 width="28"
                 height="28"
                 rx="4"
-                stroke="#D4FF33"
+                stroke={statuses.some((x) => x) ? "#D4FF33" : "#FFFCF5"}
                 stroke-width="2"
+                fill={statuses.every((x) => x) ? "#D4FF33" : "none"}
               />
             </svg>
             <div
               className={cn(
                 "w-[1px] bg-green absolute top-[1.875vw]",
-                last ? "h-[85%]" : "h-[calc(100%+2.5vw)]"
+                statuses.some((x) => x) ? "bg-green" : "bg-white",
+                last ? "h-[85%]" : "h-[calc(100%+2.5vw)]",
+                statuses.some((x) => x) &&
+                  !statuses.every((x) => x) &&
+                  "bg-gradient-to-t from-white to-green"
               )}
             ></div>
           </div>
@@ -53,7 +60,10 @@ const TaskSection = ({
         <div className="flex flex-col gap-2 font-roboto">
           {tasks.map((x, i) => (
             <div
-              className="w-[34.375vw] bg-green text-dark text-[1vw] px-[1.063vw] py-[0.938vw] rounded-[0.313vw] whitespace-pre-line relative"
+              className={cn(
+                "w-[34.375vw] bg-green text-dark text-[1vw] px-[1.063vw] py-[0.938vw] rounded-[0.313vw] whitespace-pre-line relative",
+                statuses[i] ? "bg-[rgb(140,160,62)] line-through" : "bg-green"
+              )}
               key={i}
             >
               {x}
@@ -112,6 +122,7 @@ export const Section5 = () => {
             `Take part in the competition, created by another person and score at
         least 90000 point`,
           ]}
+          statuses={[true, true, false, false, true]}
         />
         <TaskSection
           id={2}
@@ -121,6 +132,7 @@ export const Section5 = () => {
             "Play Randzu game in two (or more) differents rooms with opponent",
             `Win in Randzu game at least once`,
           ]}
+          statuses={[false, false, false]}
         />
         <TaskSection
           id={3}
@@ -131,6 +143,7 @@ export const Section5 = () => {
             `Create you own lobby compete`,
             "Invite and play with another participants in your own lobby",
           ]}
+          statuses={[true, true, true, true]}
         />
         <TaskSection
           id={4}
@@ -140,6 +153,7 @@ export const Section5 = () => {
             "Choose one game from games list and add it to your favorite games by clicking on heart on game card on main page",
             `Bridge and unbridge at least 50 MINA tests token`,
           ]}
+          statuses={[false, true, false]}
         />
         <TaskSection
           id={5}
@@ -154,6 +168,7 @@ export const Section5 = () => {
             finished.`,
           ]}
           last={true}
+          statuses={[false]}
         />
       </div>
     </section>
