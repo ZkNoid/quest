@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${arame.variable} overflow-x-hidden bg-dark`}>{children}</body>
+      <body className={`${roboto.variable} ${arame.variable} overflow-x-hidden scroll-smooth bg-dark`}>{children}</body>
     </html>
   );
 }
