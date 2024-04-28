@@ -1,10 +1,8 @@
-import Image from "next/image";
-import DiscordSVG from "./assets/discord.svg";
-import DiscordBlackSVG from "./assets/discord-black.svg";
+"use client";
 
-import TelegramSVG from "./assets/telegram.svg";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
+import { ConnectWallet } from "../ConnectWallet";
 
 const Card = ({
   title,
@@ -13,6 +11,7 @@ const Card = ({
   bg,
   textBg,
   children,
+  singlePage,
 }: {
   title: string;
   text: string;
@@ -20,11 +19,13 @@ const Card = ({
   bg: string;
   textBg: string;
   children?: ReactNode;
+  singlePage?: boolean;
 }) => {
+  const [expanded, setExpanded] = useState(false);
   return (
     <div
       className={cn(
-        " rounded-[0.6vw] p-[0.9375vw] relative overflow-hidden",
+        "rounded-[0.6vw] p-[0.9375vw] relative overflow-hidden",
         bg,
         index % 2 == 0 && "text-dark top-[4.3vw]"
       )}
@@ -38,38 +39,69 @@ const Card = ({
         {`O${index}`}
       </div>
       <p className="text-[3.125vw]">{title}</p>
-      <p className="text-[2vw] font-roboto">{text}</p>
-      {children ?? (
-        <div className="absolute w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group bottom-0 right-0 m-[0.625vw]">
+      {!expanded && (
+        <>
+          <p className="text-[2vw] font-roboto">{text}</p>
+        </>
+      )}
+      {/*  */}
+
+      {!singlePage && (
+        <div
+          className="absolute w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group bottom-0 right-0 m-[0.625vw]"
+          onClick={() => setExpanded(!expanded)}
+        >
           <div
             className={cn(
               "pl-[0.25vw] w-[4.125vw] h-[4.125vw] border-white rounded-[0.6vw] shadow-main group-hover:shadow-none border-[0.3125vw] flex items-center justify-center cursor-pointer",
               bg
             )}
           >
-            <svg
-              className="w-[1.5vw]"
-              width="24"
-              height="39"
-              viewBox="0 0 24 39"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M2 2L19.5 19.5L2 37"
-                stroke={index % 2 == 1 ? "#FFFCF5" : "#141414"}
-                stroke-width="5"
-              />
-            </svg>
+            {!expanded ? (
+              <svg
+                className="w-[1.5vw]"
+                width="24"
+                height="39"
+                viewBox="0 0 24 39"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 2L19.5 19.5L2 37"
+                  stroke={index % 2 == 1 ? "#FFFCF5" : "#141414"}
+                  stroke-width="5"
+                />
+              </svg>
+            ) : (
+              <svg
+                width="39"
+                height="38"
+                viewBox="0 0 39 38"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M2 2L37 36" stroke={index % 2 == 1 ? "#FFFCF5" : "#141414"} stroke-width="5" />
+                <path d="M37 2L2 36" stroke={index % 2 == 1 ? "#FFFCF5" : "#141414"} stroke-width="5" />
+              </svg>
+            )}
           </div>
         </div>
       )}
+      {singlePage ||
+        (expanded && (
+          <div className="text-[2vw] font-roboto z-50 relative leading-tight">
+            {children}
+          </div>
+        ))}
     </div>
   );
 };
 export const Section2 = () => {
   return (
-    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]" id="section2">
+    <section
+      className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
+      id="section2"
+    >
       <div className="w-full text-[4.3vw]">
         <p>HOW</p>
         <p>TO TAKE A PART?</p>
@@ -80,6 +112,7 @@ export const Section2 = () => {
             index={1}
             bg="bg-blue"
             textBg="text-[rgb(13,13,255)]"
+            singlePage={true}
           >
             <div className="flex gap-[1.875vw] pt-[1vw]">
               <div className="w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group">
@@ -128,7 +161,14 @@ export const Section2 = () => {
             index={2}
             bg="bg-green"
             textBg="text-[rgb(188,253,80)]"
-          />
+          >
+            <p>Connect Auro Wallet if installed</p>
+            <ConnectWallet />
+            <p className="pt-[0.5vw]">
+              Or create new on the Auro Wallet Website
+            </p>
+            <ConnectWallet text="Create new wallet" />
+          </Card>
           <Card
             title="GET TOKENS"
             text="During all testnet you can use test MINA token, they can be
@@ -136,14 +176,37 @@ export const Section2 = () => {
             index={3}
             bg="bg-red"
             textBg="text-[rgb(234,62,38)]"
-          />
+          >
+            <p>
+              1. Open Mina{" "}
+              <a
+                href="https://berkeley.minaexplorer.com/faucet"
+                className="underline"
+              >
+                Berkeley
+              </a>{" "}
+              faucet{" "}
+            </p>
+            <p>2. Request Mina Berkeley tokens</p>
+            <p>
+              3. Head to{" "}
+              <a href="https://app.zknoid.io/" className="underline">
+                ZkNoid
+              </a>{" "}
+            </p>
+            <p>4. Switch to berkeley network</p>
+            <p>5. Click top-up button in the header and use bridge</p>
+          </Card>
           <Card
             title="CHALLENGE"
             text="Finish the tasks and Fill The Form"
             index={4}
             bg="bg-violet"
             textBg="text-[rgb(175,116,247)]"
-          />
+          >
+            <p>Check and complete tasks</p>
+            <p>Fill The form after completed tasks</p>
+          </Card>
         </div>
       </div>
     </section>
