@@ -72,8 +72,9 @@ export const Topbar = () => {
               name: "QUESTS",
               href: "#section5",
             },
-          ].map((x) => (
+          ].map((x, i) => (
             <Link
+              key={i}
               href={x.href}
               target={!x.href.startsWith("#") ? "_blank" : undefined}
               rel="noopener noreferrer"
