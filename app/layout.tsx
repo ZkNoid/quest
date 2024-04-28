@@ -37,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.variable} ${arame.variable} overflow-x-hidden scroll-smooth bg-dark`}>{children}</body>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${roboto.variable} ${arame.variable} overflow-x-hidden bg-dark`}>{children}</body>
     </html>
   );
 }
