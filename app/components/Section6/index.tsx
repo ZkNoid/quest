@@ -118,7 +118,7 @@ export const Section6 = () => {
             <div className="w-full">
               <p className="text-[1vw] pb-[0.625vw]">Your Discord handle</p>
               <input
-                className="w-full h-[3.5vw] bg-blue border rounded-[0.625vw] p-[0.625vw]"
+                className="w-full h-[3.5vw] bg-blue border rounded-[0.625vw] p-[0.625vw] text-[1vw]"
                 placeholder="Type here your discord nickname..."
               />
             </div>
@@ -127,7 +127,7 @@ export const Section6 = () => {
                 Describe your activity ;)
               </p>
               <textarea
-                className="w-full bg-blue border rounded-[0.625vw] p-[0.625vw] h-[9vw]"
+                className="w-full bg-blue border rounded-[0.625vw] p-[0.625vw] h-[9vw] text-[1vw]"
                 placeholder="Type here your discord nickname..."
               />
             </div>

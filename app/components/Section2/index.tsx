@@ -74,6 +74,7 @@ const Card = ({
               </svg>
             ) : (
               <svg
+                className="w-[2.438vw]"
                 width="39"
                 height="38"
                 viewBox="0 0 39 38"
@@ -172,9 +173,7 @@ export const Section2 = () => {
           >
             <p>Connect Auro Wallet if installed</p>
             <ConnectWallet />
-            <p className="pt-[1vw]">
-              Or create new on the Auro Wallet Website
-            </p>
+            <p className="pt-[1vw]">Or create new on the Auro Wallet Website</p>
             <ConnectWallet text="Create new wallet" />
           </Card>
           <Card
