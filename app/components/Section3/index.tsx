@@ -24,15 +24,19 @@ interface ParallaxProps {
 
 function ParallaxText({ children, baseVelocity = 10 }: ParallaxProps) {
   const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400,
-  });
-  const velocityFactor = useTransform(smoothVelocity, [0, 2000], [0, 5], {
-    clamp: false,
-  });
+  // const { scrollY } = useScroll();
+  // const scrollVelocity = useVelocity(scrollY);
+  // const smoothVelocity = useSpring(scrollVelocity, {
+  //   damping: 50,
+  //   stiffness: 400,
+  // });
+  // const velocityFactor = useTransform(smoothVelocity, [0, 2000], [0, 5], {
+  //   clamp: false,
+  // });
+
+  const velocityFactor = {
+    get: () => 1,
+  };
 
   const x = useTransform(baseX, (v) => `${wrap(-35.35, -2.4, v)}vw`);
 
@@ -89,7 +93,10 @@ const Dots = () => (
 
 export const Section3 = () => {
   return (
-    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]" id="section3">
+    <section
+      className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
+      id="section3"
+    >
       <div className="w-full text-[4.3vw]">
         <p>GRAB</p>
         <p>REWARDS</p>
