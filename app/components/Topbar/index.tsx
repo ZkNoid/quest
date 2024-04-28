@@ -4,6 +4,9 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Socials } from "../Socials";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+const MotionLink = motion(Link);
 
 export const Topbar = () => {
   const [opened, setOpened] = useState(false);
@@ -73,14 +76,18 @@ export const Topbar = () => {
               href: "#section5",
             },
           ].map((x, i) => (
-            <Link
+            <MotionLink
               key={i}
               href={x.href}
               target={!x.href.startsWith("#") ? "_blank" : undefined}
               rel="noopener noreferrer"
+              whileHover={{ fontSize: "2.5vw", color: "#3A39FF" }}
+              initial={{ fontSize: "2vw", color: "#00000" }}
+              // animate={{ fontSize: "3vw", color: "#ff2994" }}
+      
             >
               {x.name}
-            </Link>
+            </MotionLink>
           ))}
           <div className="pt-6">
             <Socials showGithub={false} />
