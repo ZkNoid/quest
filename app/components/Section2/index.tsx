@@ -2,7 +2,7 @@
 
 import { ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
-import { ConnectWallet } from "../ConnectWallet";
+import { ConnectWallet, LinkButton } from "../ConnectWallet";
 
 const Card = ({
   title,
@@ -80,8 +80,16 @@ const Card = ({
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M2 2L37 36" stroke={index % 2 == 1 ? "#FFFCF5" : "#141414"} stroke-width="5" />
-                <path d="M37 2L2 36" stroke={index % 2 == 1 ? "#FFFCF5" : "#141414"} stroke-width="5" />
+                <path
+                  d="M2 2L37 36"
+                  stroke={index % 2 == 1 ? "#FFFCF5" : "#141414"}
+                  stroke-width="5"
+                />
+                <path
+                  d="M37 2L2 36"
+                  stroke={index % 2 == 1 ? "#FFFCF5" : "#141414"}
+                  stroke-width="5"
+                />
               </svg>
             )}
           </div>
@@ -164,7 +172,7 @@ export const Section2 = () => {
           >
             <p>Connect Auro Wallet if installed</p>
             <ConnectWallet />
-            <p className="pt-[0.5vw]">
+            <p className="pt-[1vw]">
               Or create new on the Auro Wallet Website
             </p>
             <ConnectWallet text="Create new wallet" />
@@ -205,7 +213,9 @@ export const Section2 = () => {
             textBg="text-[rgb(175,116,247)]"
           >
             <p>Check and complete tasks</p>
-            <p>Fill The form after completed tasks</p>
+            <LinkButton text="Show me tasks" href="" bg="bg-violet" />
+            <p className="pt-[2vw]">Fill the form after completed tasks</p>
+            <LinkButton text="Fill the form" href="" bg="bg-violet" />
           </Card>
         </div>
       </div>

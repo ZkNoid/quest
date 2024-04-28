@@ -13,7 +13,9 @@ export const Footer = () => {
         className="w-[12.875vw] h-[2.56vw] ml-[3.1vw] mb-[1.25vw]"
       />
       <Socials showGithub={true} />
-      <ConnectWallet />
+      <div className="mr-[3.1vw]">
+        <ConnectWallet />
+      </div>
     </div>
   );
 };
