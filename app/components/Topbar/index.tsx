@@ -9,12 +9,22 @@ import { motion } from "framer-motion";
 const MotionLink = motion(Link);
 
 export const Topbar = () => {
+
   const [opened, setOpened] = useState(false);
   return (
-    <div className="fixed top-0 z-50 flex flex-col items-center">
+    <motion.div className="fixed top-0 z-50 flex flex-col items-center" variants={{
+      open: {
+        y: 100
+      },
+      closed: {
+        y: 0
+      }
+    }}
+    animate={opened ? "open" : "closed"}
+    >
       <div
         className={cn(
-          " cursor-pointer w-[10.813vw] h-[2.5vw] flex items-center justify-center",
+          "cursor-pointer w-[10.813vw] h-[2.5vw] flex items-center justify-center",
           opened && "bg-violet rounded-t-[0.625vw]",
           !opened &&
             "bg-dark border-green border-l border-b border-r rounded-b-[0.625vw]"
@@ -83,8 +93,6 @@ export const Topbar = () => {
               rel="noopener noreferrer"
               whileHover={{ fontSize: "2.5vw", color: "#3A39FF" }}
               initial={{ fontSize: "2vw", color: "#00000" }}
-              // animate={{ fontSize: "3vw", color: "#ff2994" }}
-      
             >
               {x.name}
             </MotionLink>
@@ -94,6 +102,6 @@ export const Topbar = () => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
