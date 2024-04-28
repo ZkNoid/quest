@@ -7,10 +7,12 @@ import { Section4 } from "./components/Section4";
 import { Section5 } from "./components/Section5";
 import { Section6 } from "./components/Section6";
 import { Footer } from "./components/Footer";
+import { Topbar } from "./components/Topbar";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center max-w-[100vw] overflow-clip">
+      <Topbar />
       <Header />
       <Section1 />
       <Section2 />

@@ -102,7 +102,7 @@ const TaskSection = ({
 
 export const Section5 = () => {
   return (
-    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
+    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]" id="section5">
       <div className="w-full text-[4.3vw] flex justify-between items-end pb-[2.5vw]">
         <div>
           <p className="leading-none">MAIN QUESTS</p>

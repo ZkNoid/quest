@@ -15,6 +15,11 @@ const arame = localFont({
   display: 'swap',
   src: [
     {
+      path: './fonts/Arame/Arame-Thin.ttf',
+      weight: '100',
+      style: 'thin',
+    },
+    {
       path: './fonts/Arame/Arame.ttf',
       weight: '400',
       style: 'normal',

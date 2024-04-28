@@ -88,10 +88,8 @@ const Dots = () => (
 );
 
 export const Section3 = () => {
-  const { scrollYProgress } = useScroll();
-
   return (
-    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
+    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]" id="section3">
       <div className="w-full text-[4.3vw]">
         <p>GRAB</p>
         <p>REWARDS</p>

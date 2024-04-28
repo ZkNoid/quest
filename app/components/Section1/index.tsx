@@ -68,7 +68,7 @@ export function Section1() {
   }, []);
 
   return (
-    <section className="w-full flex flex-col items-center">
+    <section className="w-full flex flex-col items-center" id="section1">
       <div className="w-[102vw] h-[102vw] left-[-1vw] bg-green absolute top-0 rounded-full mt-[-50vw] z-[-100]" />
       <div className="flex flex-col relative">
         <Image

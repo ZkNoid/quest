@@ -69,7 +69,7 @@ const Card = ({
 };
 export const Section2 = () => {
   return (
-    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
+    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]" id="section2">
       <div className="w-full text-[4.3vw]">
         <p>HOW</p>
         <p>TO TAKE A PART?</p>

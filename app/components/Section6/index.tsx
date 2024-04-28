@@ -167,6 +167,7 @@ export const Section6 = () => {
             viewBox="0 0 22 13"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="w-[1.375vw]"
           >
             <path
               d="M1 11.8975L11 1.89746L21 11.8975"
