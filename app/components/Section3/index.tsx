@@ -110,7 +110,7 @@ export const Section3 = () => {
               className="absolute w-[12.659375vw] h-[12.659375vw]"
               initial={{ rotate: 0 }}
               whileInView={{ rotate: "360deg" }}
-              transition={{ duration: 5, ease: "linear", repeat: Infinity }}
+              transition={{ duration: 10, ease: "linear", repeat: Infinity }}
             ></MotionImage>
             <div className="absolute text-white text-[2.786875vw] flex items-center justify-center w-[12.659375vw] h-[12.659375vw] text-center leading-none">
               500 $MINA

@@ -150,10 +150,10 @@ export const Section6 = () => {
           <MotionImage
             src={GoodJob}
             alt=""
-            className=""
+            className="absolute w-[12.659375vw] h-[12.659375vw]"
             initial={{ rotate: 0 }}
             whileInView={{ rotate: "360deg" }}
-            transition={{ duration: 5, ease: "linear", repeat: Infinity }}
+            transition={{ duration: 10, ease: "linear", repeat: Infinity }}
           />
           <div className="absolute text-white text-[2.786875vw] flex items-center justify-center text-center leading-none z-10">
             GOOD JOB!
