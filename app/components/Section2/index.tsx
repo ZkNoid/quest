@@ -4,6 +4,7 @@ import { ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ConnectWallet, LinkButton } from "../ConnectWallet";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Card = ({
   title,
@@ -24,12 +25,17 @@ const Card = ({
 }) => {
   const [expanded, setExpanded] = useState(false);
   return (
-    <div
+    <motion.div
       className={cn(
         "rounded-[0.6vw] p-[0.9375vw] relative overflow-hidden",
         bg,
         index % 2 == 0 && "text-dark top-[4.3vw]"
       )}
+      whileInView={{
+        y: 0,
+      }}
+      initial={{ y: 100 + index * 5 }}
+      transition={{ delay: 0.3, duration: 0.1 * index, ease: "easeIn" }}
     >
       <div
         className={cn(
@@ -103,7 +109,7 @@ const Card = ({
             {children}
           </div>
         ))}
-    </div>
+    </motion.div>
   );
 };
 export const Section2 = () => {
