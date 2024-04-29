@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ConnectWallet, LinkButton } from "../ConnectWallet";
 import Link from "next/link";
@@ -33,16 +33,17 @@ const Card = ({
         bg,
         index % 2 == 0 && "text-dark top-[4.3vw]"
       )}
+      initial={{ y: `${index * 10}vw` }}
       variants={{
-        default: { y: `${10 + index * 8}vw` },
+        default: { y: `${index * 10}vw` },
         opened: { y: 0 },
       }}
       animate={startAnimation ? "opened" : "default"}
       transition={{
-        delay: 0,
-        duration: 0.3 * index,
+        delay: (0.8 * index) / 4,
+        duration: 0.5,
         type: "spring",
-        ease: 'easeOut',
+        ease: "linear",
         stiffness: 70,
       }}
     >
@@ -120,11 +121,11 @@ const Card = ({
 };
 export const Section2 = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, { once: true });
 
   return (
     <section
-      className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
+      className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw] overflow-hidden"
       id="section2"
     >
       <div className="w-full text-[4.3vw]">
