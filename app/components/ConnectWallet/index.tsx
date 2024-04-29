@@ -18,9 +18,9 @@ export const WalletUpdater = () => {
 
       (window.mina as any).on("accountsChanged", listener);
 
-      let [account] = await (window as any).mina.requestAccounts();
+      // let [account] = await (window as any).mina.requestAccounts();
 
-      networkStore.onWalletConnected(account);
+      // networkStore.onWalletConnected(account);
 
       return () => {
         (window.mina as any).removeListener(listener);
