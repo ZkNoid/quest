@@ -1,11 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import Image from "next/image";
 import DecorationSVG from "./assets/decoration.svg";
 import GoodJob from "./assets/good-job.svg";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const MotionImage = motion(Image);
 
@@ -16,6 +16,8 @@ const Card = ({
   items,
   isWhite,
   children,
+  startAnimation,
+  index,
 }: {
   bg: string;
   title: string;
@@ -23,14 +25,29 @@ const Card = ({
   isWhite: boolean;
   items: string[];
   children?: ReactNode;
+  startAnimation: boolean;
+  index: number;
 }) => {
   return (
-    <div
+    <motion.div
       className={cn(
         "w-full rounded-[0.625vw] px-[0.938vw] py-[1.875vw] flex flex-col gap-[0.938vw]",
         isWhite ? "text-white" : "text-dark",
         bg
       )}
+      initial={{ y: `${index * 10}vw` }}
+      variants={{
+        default: { y: `${index * 10}vw` },
+        opened: { y: 0 },
+      }}
+      animate={startAnimation ? "opened" : "default"}
+      transition={{
+        delay: (0.8 * (index - 1)) / 4,
+        duration: 0.5,
+        type: "spring",
+        ease: "linear",
+        stiffness: 70,
+      }}
     >
       <p className="text-[3.125vw] leading-none">{title}</p>
       <div className="p-[0.313vw]">
@@ -54,11 +71,14 @@ const Card = ({
           {children}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export const Section6 = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
       <div className="w-full text-[4.3vw] flex justify-between items-end pb-[2.5vw]">
@@ -67,7 +87,7 @@ export const Section6 = () => {
         </div>
       </div>
       <div className="grid grid-cols-3 w-full flex-col gap-[1.375vw] relative">
-        <div className="w-full">
+        <div className="w-full" ref={ref}>
           <div className="font-roboto text-[1.25vw] pb-[1.5vw]">
             Additional tasks are not part of the list required to receive the
             general award, but if you wish to be eligible for a specific award,
@@ -84,6 +104,8 @@ export const Section6 = () => {
               "Suggest what could be improved in user experience and user interface in ZkNoid Quest page",
             ]}
             isWhite={false}
+            index={1}
+            startAnimation={isInView}
           />
         </div>
         <div className="w-full flex flex-col gap-[1.25vw]">
@@ -98,6 +120,8 @@ export const Section6 = () => {
               "Report about all bugs you found during the testnet in special chat in Discord channel",
             ]}
             isWhite={false}
+            index={2}
+            startAnimation={isInView}
           />
           <Card
             bg="bg-red"
@@ -108,6 +132,8 @@ export const Section6 = () => {
               "Win one time in checkers game",
             ]}
             isWhite={true}
+            index={3}
+            startAnimation={isInView}
           />
         </div>
         <div>
@@ -117,6 +143,8 @@ export const Section6 = () => {
             heading="Write here about any of your successes in additional tasks"
             items={[]}
             isWhite={true}
+            index={4}
+            startAnimation={isInView}
           >
             <div className="w-full">
               <p className="text-[1vw] pb-[0.625vw]">Your Discord handle</p>

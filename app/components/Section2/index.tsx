@@ -120,8 +120,8 @@ const Card = ({
   );
 };
 export const Section2 = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
 
   return (
     <section
