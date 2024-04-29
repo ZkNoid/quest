@@ -1,10 +1,10 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ConnectWallet, LinkButton } from "../ConnectWallet";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const Card = ({
   title,
@@ -14,6 +14,7 @@ const Card = ({
   textBg,
   children,
   singlePage,
+  startAnimation,
 }: {
   title: string;
   text: string;
@@ -22,6 +23,7 @@ const Card = ({
   textBg: string;
   children?: ReactNode;
   singlePage?: boolean;
+  startAnimation: boolean;
 }) => {
   const [expanded, setExpanded] = useState(false);
   return (
@@ -31,11 +33,18 @@ const Card = ({
         bg,
         index % 2 == 0 && "text-dark top-[4.3vw]"
       )}
-      whileInView={{
-        y: 0,
+      variants={{
+        default: { y: `${10 + index * 8}vw` },
+        opened: { y: 0 },
       }}
-      initial={{ y: `${10 + index * 2}vw` }}
-      transition={{ delay: 0, duration: 0.1 * index, ease: "easeIn" }}
+      animate={startAnimation ? "opened" : "default"}
+      transition={{
+        delay: 0,
+        duration: 0.3 * index,
+        type: "spring",
+        ease: 'easeOut',
+        stiffness: 70,
+      }}
     >
       <div
         className={cn(
@@ -51,8 +60,6 @@ const Card = ({
           <p className="text-[2vw] font-roboto">{text}</p>
         </>
       )}
-      {/*  */}
-
       {!singlePage && (
         <div
           className="absolute w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group bottom-0 right-0 m-[0.625vw]"
@@ -112,6 +119,9 @@ const Card = ({
   );
 };
 export const Section2 = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
   return (
     <section
       className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
@@ -120,7 +130,10 @@ export const Section2 = () => {
       <div className="w-full text-[4.3vw]">
         <p>HOW</p>
         <p>TO TAKE A PART?</p>
-        <div className="w-full grid grid-cols-4 h-[34vw] mb-[4.3vw] mt-[2vw]">
+        <div
+          className="w-full grid grid-cols-4 h-[34vw] mb-[4.3vw] mt-[2vw]"
+          ref={ref}
+        >
           <Card
             title="CONNECT"
             text="Join Discord and Telegram channel"
@@ -128,6 +141,7 @@ export const Section2 = () => {
             bg="bg-blue"
             textBg="text-[rgb(13,13,255)]"
             singlePage={true}
+            startAnimation={isInView}
           >
             <div className="flex gap-[1.875vw] pt-[1vw]">
               <div className="w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group">
@@ -176,6 +190,7 @@ export const Section2 = () => {
             index={2}
             bg="bg-green"
             textBg="text-[rgb(188,253,80)]"
+            startAnimation={isInView}
           >
             <p>Connect Auro Wallet if installed</p>
             <ConnectWallet />
@@ -189,6 +204,7 @@ export const Section2 = () => {
             index={3}
             bg="bg-red"
             textBg="text-[rgb(234,62,38)]"
+            startAnimation={isInView}
           >
             <p>
               1. Open Mina{" "}
@@ -223,6 +239,7 @@ export const Section2 = () => {
             index={4}
             bg="bg-violet"
             textBg="text-[rgb(175,116,247)]"
+            startAnimation={isInView}
           >
             <p>Check and complete tasks</p>
             <LinkButton text="Show me tasks" href="#section5" bg="bg-violet" />
