@@ -34,8 +34,8 @@ const Card = ({
       whileInView={{
         y: 0,
       }}
-      initial={{ y: 100 + index * 5 }}
-      transition={{ delay: 0.3, duration: 0.1 * index, ease: "easeIn" }}
+      initial={{ y: `${10 + index * 2 }vw` }}
+      transition={{ delay: 0, duration: 0.1 * index, ease: "easeIn" }}
     >
       <div
         className={cn(
