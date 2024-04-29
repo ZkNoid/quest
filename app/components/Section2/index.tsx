@@ -3,6 +3,7 @@
 import { ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ConnectWallet, LinkButton } from "../ConnectWallet";
+import Link from "next/link";
 
 const Card = ({
   title,
@@ -186,20 +187,27 @@ export const Section2 = () => {
           >
             <p>
               1. Open Mina{" "}
-              <a
+              <Link
                 href="https://berkeley.minaexplorer.com/faucet"
                 className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Berkeley
-              </a>{" "}
+              </Link>{" "}
               faucet{" "}
             </p>
             <p>2. Request Mina Berkeley tokens</p>
             <p>
               3. Head to{" "}
-              <a href="https://app.zknoid.io/" className="underline">
+              <Link
+                href="https://app.zknoid.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
                 ZkNoid
-              </a>{" "}
+              </Link>{" "}
             </p>
             <p>4. Switch to berkeley network</p>
             <p>5. Click top-up button in the header and use bridge</p>
