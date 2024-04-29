@@ -5,6 +5,9 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import DecorationSVG from "./assets/decoration.svg";
 import GoodJob from "./assets/good-job.svg";
+import { motion } from "framer-motion";
+
+const MotionImage = motion(Image);
 
 const Card = ({
   bg,
@@ -143,11 +146,19 @@ export const Section6 = () => {
           alt=""
           className="absolute bottom-0 w-[52.125vw] right-[-9.8vw] z-[-100]"
         />
-        <Image
-          src={GoodJob}
-          alt=""
-          className="absolute bottom-0 w-[12.688vw] right-[-2.8vw] z-[-100]"
-        />
+        <div className="absolute bottom-0 w-[12.688vw] right-[-2.8vw] z-[-100] flex items-center justify-center">
+          <MotionImage
+            src={GoodJob}
+            alt=""
+            className=""
+            initial={{ rotate: 0 }}
+            whileInView={{ rotate: "360deg" }}
+            transition={{ duration: 5, ease: "linear", repeat: Infinity }}
+          />
+          <div className="absolute text-white text-[2.786875vw] flex items-center justify-center text-center leading-none z-10">
+            GOOD JOB!
+          </div>
+        </div>
       </div>
 
       <div className="pt-[10vw] w-full flex justify-end text-[1.25vw] pb-[2.969vw] ">

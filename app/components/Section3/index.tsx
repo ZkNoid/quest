@@ -91,6 +91,8 @@ const Dots = () => (
   </svg>
 );
 
+const MotionImage = motion(Image);
+
 export const Section3 = () => {
   return (
     <section
@@ -102,17 +104,17 @@ export const Section3 = () => {
         <p>REWARDS</p>
         <div className="w-full grid grid-cols-2 h-[14.9375vw] mb-[4.3vw] mt-[2vw] gap-[1.25vw] text-dark relative">
           <div className="absolute z-20 left-0 right-0 mx-auto top-[-6.3vw] w-[12.659375vw] h-[12.659375vw]">
-            <Image
+            <MotionImage
               src={FlyerMiddle}
               alt=""
               className="absolute w-[12.659375vw] h-[12.659375vw]"
-            ></Image>
-            <motion.div 
-              className="absolute text-white text-[2.786875vw] flex items-center justify-center w-[12.659375vw] h-[12.659375vw] text-center leading-none"
-
-            >
+              initial={{ rotate: 0 }}
+              whileInView={{ rotate: "360deg" }}
+              transition={{ duration: 5, ease: "linear", repeat: Infinity }}
+            ></MotionImage>
+            <div className="absolute text-white text-[2.786875vw] flex items-center justify-center w-[12.659375vw] h-[12.659375vw] text-center leading-none">
               500 $MINA
-            </motion.div>
+            </div>
           </div>
           <div className="bg-green rounded-[0.6vw] flex flex-col justify-center items-center px-[1.0625vw] relative overflow-hidden">
             <Image
