@@ -34,7 +34,7 @@ const Card = ({
       whileInView={{
         y: 0,
       }}
-      initial={{ y: `${10 + index * 2 }vw` }}
+      initial={{ y: `${10 + index * 2}vw` }}
       transition={{ delay: 0, duration: 0.1 * index, ease: "easeIn" }}
     >
       <div
@@ -103,12 +103,11 @@ const Card = ({
           </div>
         </div>
       )}
-      {singlePage ||
-        (expanded && (
-          <div className="text-[2vw] font-roboto z-50 relative leading-tight">
-            {children}
-          </div>
-        ))}
+      {(singlePage || expanded) && (
+        <div className="text-[2vw] font-roboto z-50 relative leading-tight">
+          {children}
+        </div>
+      )}
     </motion.div>
   );
 };
