@@ -16,7 +16,6 @@ export default function Header() {
           href={"https://discord.gg/hndRCZwQnb"}
           target="_blank"
           rel="noopener noreferrer"
-          scroll={false}
           className="bg-[white] w-[16vw] h-[4.375vw] rounded-[0.6vw] flex items-center justify-center shadow-main group-hover:shadow-none group-hover:border group-hover:font-black gap-[1vw] font-roboto font-regular text-[1.25vw] cursor-pointer"
         >
           <Image src={Discord} alt="logo" className="w-[3.4vw] h-[2.56vw]" />

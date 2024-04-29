@@ -6,8 +6,8 @@ import Vsign from "./assets/v-sign.svg";
 
 import Image from "next/image";
 import { useState } from "react";
-import { ConnectWallet } from "../ConnectWallet";
-
+import { ConnectWallet, WalletUpdater } from "../ConnectWallet";
+import { useNetworkStore } from "@/lib/stores/network";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
   const [additionalSteps, setAdditionalSteps] = useState(0);
@@ -77,12 +77,11 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
 };
 
 export const Section4 = () => {
-  const connected = false;
-
-  const [progress, setProgress] = useState(0);
+  const network = useNetworkStore();
 
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
+      <WalletUpdater />
       <div className="w-full text-[4.3vw] flex justify-between items-end">
         <div>
           <p className="flex gap-[1.0625vw]">
@@ -95,13 +94,15 @@ export const Section4 = () => {
           </p>
           <p className="leading-none">TASKS PROGRESS</p>
         </div>
-        {!connected && (
+        {!network.address && (
           <div>
-            <ConnectWallet dark={true} />
+            <ConnectWallet
+              dark={true}
+            />
           </div>
         )}
       </div>
-      {connected && <Progress step={3} />}
+      {network.address && <Progress step={3} />}
     </section>
   );
 };

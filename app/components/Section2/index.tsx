@@ -212,7 +212,7 @@ export const Section2 = () => {
             textBg="text-[rgb(175,116,247)]"
           >
             <p>Check and complete tasks</p>
-            <LinkButton text="Show me tasks" href="" bg="bg-violet" />
+            <LinkButton text="Show me tasks" href="#section5" bg="bg-violet" />
             <p className="pt-[2vw]">Fill the form after completed tasks</p>
             <LinkButton text="Fill the form" href="" bg="bg-violet" />
           </Card>
