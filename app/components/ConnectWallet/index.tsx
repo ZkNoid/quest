@@ -40,7 +40,7 @@ export const ConnectWallet = ({
   const networkStore = useNetworkStore();
 
   const formatAddress = (address: string | undefined) =>
-    address ? address.slice(0, 14) + "..." : "None";
+    address ? address.slice(0, 12) + "..." : "None";
 
   return (
     <div
