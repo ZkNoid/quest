@@ -40,7 +40,7 @@ const Card = ({
       }}
       animate={startAnimation ? "opened" : "default"}
       transition={{
-        delay: (0.8 * index) / 4,
+        delay: (0.8 * (index - 1)) / 4,
         duration: 0.5,
         type: "spring",
         ease: "linear",
