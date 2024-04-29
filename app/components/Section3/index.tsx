@@ -107,9 +107,12 @@ export const Section3 = () => {
               alt=""
               className="absolute w-[12.659375vw] h-[12.659375vw]"
             ></Image>
-            <div className="absolute text-white text-[2.786875vw] flex items-center justify-center w-[12.659375vw] h-[12.659375vw] text-center leading-none">
+            <motion.div 
+              className="absolute text-white text-[2.786875vw] flex items-center justify-center w-[12.659375vw] h-[12.659375vw] text-center leading-none"
+              
+            >
               500 $MINA
-            </div>
+            </motion.div>
           </div>
           <div className="bg-green rounded-[0.6vw] flex flex-col justify-center items-center px-[1.0625vw] relative overflow-hidden">
             <Image

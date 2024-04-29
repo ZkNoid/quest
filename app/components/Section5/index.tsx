@@ -24,7 +24,7 @@ const TaskSection = ({
           </div>
           {name}
         </div>
-        <div className="h-full">
+        <div className="h-full flex justify-center">
           <div className="flex flex-col h-full items-center w-[1.875vw] relative">
             <svg
               width="30"
@@ -57,7 +57,7 @@ const TaskSection = ({
             ></div>
           </div>
         </div>
-        <div className="flex flex-col gap-2 font-roboto">
+        <div className="flex flex-col gap-2 font-roboto items-end">
           {tasks.map((x, i) => (
             <div
               className={cn(
