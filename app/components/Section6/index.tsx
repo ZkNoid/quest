@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import DecorationSVG from "./assets/decoration.svg";
 import GoodJob from "./assets/good-job.svg";
@@ -87,11 +87,20 @@ const BackToTopButton = () => {
     }
   };
 
-  window.addEventListener("scroll", toggleVisible);
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisible);
+
+    return () => {
+      window.removeEventListener("scroll", toggleVisible);
+    };
+  }, []);
 
   return (
     <div
-      className={cn("flex items-center text-green cursor-pointer gap-[0.625vw] fixed bottom-[0.7vw] right-[1.125vw]", !visible && "hidden")}
+      className={cn(
+        "flex items-center text-green cursor-pointer gap-[0.625vw] fixed bottom-[0.7vw] right-[1.125vw]",
+        !visible && "hidden"
+      )}
       onClick={() => {
         window.scrollTo({
           top: 0,
