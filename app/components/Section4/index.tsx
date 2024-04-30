@@ -8,11 +8,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { ConnectWallet, WalletUpdater } from "../ConnectWallet";
 import { useNetworkStore } from "@/lib/stores/network";
+import { api } from "@/trpc/react";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
-  const [additionalSteps, setAdditionalSteps] = useState(0);
 
-  const step = (stepRaw + additionalSteps) % 9;
+  const step = (stepRaw) % 9;
 
   const percents = [11, 22, 33, 44, 55, 66, 77, 88, 100];
   const percent = percents[step];
@@ -58,7 +58,6 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
         src={Vsign}
         alt="V-sign"
         className="absolute right-0 w-[13.188vw] bottom-0 cursor-pointer"
-        onClick={() => setAdditionalSteps(additionalSteps + 1)}
       />
       <div
         className={cn(
@@ -78,6 +77,20 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
 
 export const Section4 = () => {
   const network = useNetworkStore();
+  const progressRouter = api.progress.getSolvedQuests.useQuery({
+    userAddress: network.address ?? "",
+  });
+
+  const quests = [
+    ...(progressRouter.data?.quests?.ARKANOID ?? []),
+    ...(progressRouter.data?.quests?.RANDZU ?? []),
+    ...(progressRouter.data?.quests?.THIMBLERIG ?? []),
+    ...(progressRouter.data?.quests?.UI_TESTS_WEB ?? []),
+  ]
+  
+  const progress = Math.ceil(8 * quests.filter(Boolean).length / Number(process.env.QUESTS_NUM ?? 15));
+
+  console.log(progress);
 
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
@@ -96,13 +109,11 @@ export const Section4 = () => {
         </div>
         {!network.address && (
           <div>
-            <ConnectWallet
-              dark={true}
-            />
+            <ConnectWallet dark={true} />
           </div>
         )}
       </div>
-      {network.address && <Progress step={3} />}
+      {network.address && <Progress step={progress} />}
     </section>
   );
 };
