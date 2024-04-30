@@ -141,7 +141,7 @@ export const Section5 = () => {
         least 90000 point`,
           ]}
           statuses={
-            progressRouter.data?.ARKANOID || [true, true, false, false, true]
+            progressRouter.data?.quests?.ARKANOID || [false, false, false, false, false]
           }
         />
         <TaskSection
@@ -152,7 +152,7 @@ export const Section5 = () => {
             "Play Randzu game in two (or more) differents rooms with opponent",
             `Win in Randzu game at least once`,
           ]}
-          statuses={progressRouter.data?.RANDZU || [false, false, false]}
+          statuses={progressRouter.data?.quests?.RANDZU || [false, false, false]}
         />
         <TaskSection
           id={3}
@@ -163,7 +163,7 @@ export const Section5 = () => {
             `Create you own lobby compete`,
             "Invite and play with another participants in your own lobby",
           ]}
-          statuses={progressRouter.data?.THIMBLERIG || [true, true, true, true]}
+          statuses={progressRouter.data?.quests?.THIMBLERIG || [false, false, false, false]}
         />
         <TaskSection
           id={4}
@@ -173,7 +173,7 @@ export const Section5 = () => {
             "Choose one game from games list and add it to your favorite games by clicking on heart on game card on main page",
             `Bridge and unbridge at least 50 MINA tests token`,
           ]}
-          statuses={progressRouter.data?.UI_TESTS_WEB || [false, true, false]}
+          statuses={progressRouter.data?.quests?.UI_TESTS_WEB || [false, false, false]}
         />
         <TaskSection
           id={5}
