@@ -29,7 +29,7 @@ export function Section1() {
   const getTimeLeft = () => {
     return Interval.fromDateTimes(
       DateTime.now(),
-      DateTime.fromMillis(new Date("2024-04-30").getTime())
+      DateTime.fromMillis(new Date("2024-05-03").getTime())
     )
       .toDuration(["days", "hours", "minutes", "seconds"])
       .toObject();

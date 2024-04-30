@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useRef, useState } from "react";
 import Image from "next/image";
 import DecorationSVG from "./assets/decoration.svg";
 import GoodJob from "./assets/good-job.svg";
@@ -72,6 +72,49 @@ const Card = ({
         </div>
       </div>
     </motion.div>
+  );
+};
+
+const BackToTopButton = () => {
+  const [visible, setVisible] = useState(false);
+
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 500) {
+      setVisible(true);
+    } else if (scrolled <= 500) {
+      setVisible(false);
+    }
+  };
+
+  window.addEventListener("scroll", toggleVisible);
+
+  return (
+    <div
+      className={cn("flex items-center text-green cursor-pointer gap-[0.625vw] fixed bottom-[0.7vw] right-[1.125vw]", !visible && "hidden")}
+      onClick={() => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }}
+    >
+      BACK TO TOP{" "}
+      <svg
+        width="22"
+        height="13"
+        viewBox="0 0 22 13"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-[1.375vw]"
+      >
+        <path
+          d="M1 11.8975L11 1.89746L21 11.8975"
+          stroke="#D4FF33"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
   );
 };
 
@@ -189,32 +232,8 @@ export const Section6 = () => {
         </div>
       </div>
 
-      <div className="pt-[10vw] w-full flex justify-end text-[1.25vw] pb-[2.969vw] ">
-        <div
-          className="flex items-center text-green cursor-pointer gap-[0.625vw]"
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: "smooth",
-            });
-          }}
-        >
-          BACK TO TOP{" "}
-          <svg
-            width="22"
-            height="13"
-            viewBox="0 0 22 13"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-[1.375vw]"
-          >
-            <path
-              d="M1 11.8975L11 1.89746L21 11.8975"
-              stroke="#D4FF33"
-              stroke-width="2"
-            />
-          </svg>
-        </div>
+      <div className="pt-[10vw] w-full flex justify-end text-[1.25vw] pb-[2.969vw]">
+        <BackToTopButton></BackToTopButton>
       </div>
     </section>
   );
