@@ -1,6 +1,8 @@
 "use client";
 
+import { useNetworkStore } from "@/lib/stores/network";
 import { cn } from "@/lib/utils";
+import { api } from "@/trpc/react";
 import Link from "next/link";
 
 const TaskSection = ({
@@ -70,7 +72,7 @@ const TaskSection = ({
               {x}
               {last && (
                 <Link
-                  href={"https://61s1tas45rv.typeform.com/"}
+                  href={"https://61s1tas45rv.typeform.com/to/WTz77lcM"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group bottom-0 right-0 m-[0.625vw]"
@@ -107,6 +109,11 @@ const TaskSection = ({
 };
 
 export const Section5 = () => {
+  const network = useNetworkStore();
+
+  const progressRouter = api.progress.getSolvedQuests.useQuery({
+    userAddress: network.address ?? '',
+  });
   return (
     <section
       className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
