@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const TaskSection = ({
   id,
@@ -68,7 +69,12 @@ const TaskSection = ({
             >
               {x}
               {last && (
-                <div className="absolute w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group bottom-0 right-0 m-[0.625vw]">
+                <Link
+                  href={"https://61s1tas45rv.typeform.com/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute w-[calc(4.125vw+0.375vw)] h-[calc(4.125vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group bottom-0 right-0 m-[0.625vw]"
+                >
                   <div
                     className={cn(
                       "pl-[0.25vw] w-[4.125vw] h-[4.125vw] border-white rounded-[0.6vw] shadow-main border-[0.3125vw] flex items-center justify-center cursor-pointer",
@@ -90,7 +96,7 @@ const TaskSection = ({
                       />
                     </svg>
                   </div>
-                </div>
+                </Link>
               )}
             </div>
           ))}
@@ -102,7 +108,10 @@ const TaskSection = ({
 
 export const Section5 = () => {
   return (
-    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]" id="section5">
+    <section
+      className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
+      id="section5"
+    >
       <div className="w-full text-[4.3vw] flex justify-between items-end pb-[2.5vw]">
         <div>
           <p className="leading-none">MAIN QUESTS</p>

@@ -124,6 +124,9 @@ export const LinkButton = ({
   return (
     <Link
       href={href}
+      target={!href.startsWith("#") ? "_blank" : undefined}
+      rel="noopener noreferrer"
+
       className="w-[calc(16vw+0.375vw)] h-[calc(4.375vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group"
     >
       <div

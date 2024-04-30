@@ -245,7 +245,7 @@ export const Section2 = () => {
             <p>Check and complete tasks</p>
             <LinkButton text="Show me tasks" href="#section5" bg="bg-violet" />
             <p className="pt-[2vw]">Fill the form after completed tasks</p>
-            <LinkButton text="Fill the form" href="" bg="bg-violet" />
+            <LinkButton text="Fill the form" href="https://61s1tas45rv.typeform.com/to/WTz77lcM" bg="bg-violet" />
           </Card>
         </div>
       </div>
