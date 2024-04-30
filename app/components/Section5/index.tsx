@@ -112,7 +112,7 @@ export const Section5 = () => {
   const network = useNetworkStore();
 
   const progressRouter = api.progress.getSolvedQuests.useQuery({
-    userAddress: network.address ?? '',
+    userAddress: network.address ?? "",
   });
   return (
     <section
@@ -140,7 +140,9 @@ export const Section5 = () => {
             `Take part in the competition, created by another person and score at
         least 90000 point`,
           ]}
-          statuses={[true, true, false, false, true]}
+          statuses={
+            progressRouter.data?.ARKANOID || [true, true, false, false, true]
+          }
         />
         <TaskSection
           id={2}
@@ -150,7 +152,7 @@ export const Section5 = () => {
             "Play Randzu game in two (or more) differents rooms with opponent",
             `Win in Randzu game at least once`,
           ]}
-          statuses={[false, false, false]}
+          statuses={progressRouter.data?.RANDZU || [false, false, false]}
         />
         <TaskSection
           id={3}
@@ -161,7 +163,7 @@ export const Section5 = () => {
             `Create you own lobby compete`,
             "Invite and play with another participants in your own lobby",
           ]}
-          statuses={[true, true, true, true]}
+          statuses={progressRouter.data?.THIMBLERIG || [true, true, true, true]}
         />
         <TaskSection
           id={4}
@@ -171,7 +173,7 @@ export const Section5 = () => {
             "Choose one game from games list and add it to your favorite games by clicking on heart on game card on main page",
             `Bridge and unbridge at least 50 MINA tests token`,
           ]}
-          statuses={[false, true, false]}
+          statuses={progressRouter.data?.UI_TESTS_WEB || [false, true, false]}
         />
         <TaskSection
           id={5}

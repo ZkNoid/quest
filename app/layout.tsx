@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
+import { TRPCReactProvider } from "@/trpc/react";
 
 const roboto = Roboto({
   variable: "--roboto",
@@ -57,7 +58,7 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${arame.variable} overflow-x-hidden bg-dark`}
       >
-        {children}
+        <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
   );
