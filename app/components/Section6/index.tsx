@@ -139,14 +139,6 @@ export const Section6 = () => {
   const discordFormRef = useRef<HTMLInputElement>(null);
   const feedbackFormRef = useRef<HTMLTextAreaElement>(null);
 
-  useEffect(() => {
-    if (feedbackSent) {
-      setTimeout(function () {
-        setFeedbackSent(false);
-      }, 5000);
-    }
-  }, [feedbackSent]);
-
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
       <div className="w-full text-[4.3vw] flex justify-between items-end pb-[2.5vw]">
@@ -218,40 +210,47 @@ export const Section6 = () => {
             index={4}
             startAnimation={isInView}
           >
-            <div className="w-full">
-              <p className="text-[1vw] pb-[0.625vw]">Your Discord handle</p>
-              <input
-                className="w-full h-[3.5vw] bg-blue border rounded-[0.625vw] p-[0.625vw] text-[1vw]"
-                placeholder="Type here your discord nickname..."
-                onChange={(e) => setDiscord(e.target.value)}
-                ref={discordFormRef}
-              />
-            </div>
-            <div className="w-full">
-              <p className="text-[1vw] pb-[0.625vw]">
-                Describe your activity ;)
-              </p>
-              <textarea
-                className="w-full bg-blue border rounded-[0.625vw] p-[0.625vw] h-[9vw] text-[1vw]"
-                placeholder="Type here your discord nickname..."
-                onChange={(e) => setFeedback(e.target.value)}
-                ref={feedbackFormRef}
-              />
-            </div>
+            {!feedbackSent && (
+              <>
+                <div className="w-full">
+                  <p className="text-[1vw] pb-[0.625vw]">Your Discord handle</p>
+                  <input
+                    className="w-full h-[3.5vw] bg-blue border rounded-[0.625vw] p-[0.625vw] text-[1vw]"
+                    placeholder="Type here your discord nickname..."
+                    onChange={(e) => setDiscord(e.target.value)}
+                    ref={discordFormRef}
+                  />
+                </div>
+                <div className="w-full">
+                  <p className="text-[1vw] pb-[0.625vw]">
+                    Describe your activity ;)
+                  </p>
+                  <textarea
+                    className="w-full bg-blue border rounded-[0.625vw] p-[0.625vw] h-[9vw] text-[1vw]"
+                    placeholder="Type here your discord nickname..."
+                    onChange={(e) => setFeedback(e.target.value)}
+                    ref={feedbackFormRef}
+                  />
+                </div>
+              </>
+            )}
+
             <div
               className="w-[calc(97%+0.375vw)] h-[calc(4.375vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group"
               onClick={() => {
-                feedbackRouter.mutate({
-                  discord,
-                  feedback,
-                });
-                discordFormRef.current!.value = "";
-                feedbackFormRef.current!.value = "";
-                setFeedbackSent(true);
+                if (!feedbackSent) {
+                  feedbackRouter.mutate({
+                    discord,
+                    feedback,
+                  });
+                  discordFormRef.current!.value = "";
+                  feedbackFormRef.current!.value = "";
+                }
+                setFeedbackSent(!feedbackSent);
               }}
             >
               <div className="bg-[white] w-[97%] h-[4.375vw] rounded-[0.6vw] flex items-center justify-center shadow-main gap-[1vw] font-roboto font-regular text-[1.25vw] cursor-pointer mr-[6.25vw] text-dark group-hover:shadow-none group-hover:border group-hover:font-black">
-                Send my feedback
+                {feedbackSent ? "Send one more" : "Send my feedback"}
               </div>
             </div>
           </Card>

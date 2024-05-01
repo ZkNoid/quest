@@ -161,7 +161,7 @@ export const Section5 = () => {
           tasks={[
             "Play Thimblerig minimum three times",
             "Win in Thimblerig at least once",
-            `Create you own lobby compete`,
+            `Create you own lobby`,
             "Invite and play with another participants in your own lobby",
           ]}
           statuses={getQuestsArray(progressRouter.data?.quests?.THIMBLERIG, 4)}
