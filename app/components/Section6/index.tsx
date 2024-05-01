@@ -7,6 +7,7 @@ import DecorationSVG from "./assets/decoration.svg";
 import GoodJob from "./assets/good-job.svg";
 import { motion, useInView } from "framer-motion";
 import { api } from "@/trpc/react";
+import { useNetworkStore } from "@/lib/stores/network";
 
 const MotionImage = motion(Image);
 
@@ -138,6 +139,7 @@ export const Section6 = () => {
   const feedbackRouter = api.feedback.sendFeedback.useMutation();
   const discordFormRef = useRef<HTMLInputElement>(null);
   const feedbackFormRef = useRef<HTMLTextAreaElement>(null);
+  const networkStore = useNetworkStore();
 
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
@@ -242,6 +244,7 @@ export const Section6 = () => {
                   feedbackRouter.mutate({
                     discord,
                     feedback,
+                    address: networkStore.address || ""
                   });
                   discordFormRef.current!.value = "";
                   feedbackFormRef.current!.value = "";
