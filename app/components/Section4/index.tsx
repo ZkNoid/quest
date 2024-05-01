@@ -5,14 +5,13 @@ import Lightnings from "./assets/lightnings.svg";
 import Vsign from "./assets/v-sign.svg";
 
 import Image from "next/image";
-import { useState } from "react";
 import { ConnectWallet, WalletUpdater } from "../ConnectWallet";
 import { useNetworkStore } from "@/lib/stores/network";
 import { api } from "@/trpc/react";
+import { getQuestsArray } from "@/app/lib/utils";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
-
-  const step = (stepRaw) % 9;
+  const step = stepRaw % 9;
 
   const percents = [11, 22, 33, 44, 55, 66, 77, 88, 100];
   const percent = percents[step];
@@ -75,6 +74,7 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
   );
 };
 
+
 export const Section4 = () => {
   const network = useNetworkStore();
   const progressRouter = api.progress.getSolvedQuests.useQuery({
@@ -82,13 +82,17 @@ export const Section4 = () => {
   });
 
   const quests = [
-    ...(progressRouter.data?.quests?.ARKANOID ?? []),
-    ...(progressRouter.data?.quests?.RANDZU ?? []),
-    ...(progressRouter.data?.quests?.THIMBLERIG ?? []),
-    ...(progressRouter.data?.quests?.UI_TESTS_WEB ?? []),
-  ]
-  
-  const progress = Math.ceil(8 * quests.filter(Boolean).length / Number(process.env.QUESTS_NUM ?? 15));
+    ...getQuestsArray(progressRouter.data?.quests?.ARKANOID ?? [], 5),
+    ...getQuestsArray(progressRouter.data?.quests?.RANDZU ?? [], 3),
+    ...getQuestsArray(progressRouter.data?.quests?.THIMBLERIG ?? [], 4),
+    ...getQuestsArray(progressRouter.data?.quests?.UI_TESTS_WEB ?? [], 3),
+  ];
+
+  console.log("Quests", quests);
+
+  const progress = Math.ceil(
+    (8 * quests.filter(Boolean).length) / Number(process.env.QUESTS_NUM ?? 15)
+  );
 
   console.log(progress);
 

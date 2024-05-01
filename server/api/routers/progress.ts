@@ -8,10 +8,10 @@ const client = await clientPromise;
 const db = client.db(process.env.MONGODB_DB);
 
 export interface Progress {
-  ARKANOID: boolean[];
-  RANDZU: boolean[];
-  THIMBLERIG: boolean[];
-  UI_TESTS_WEB: boolean[];
+  ARKANOID: Record<number, boolean>;
+  RANDZU: Record<number, boolean>;
+  THIMBLERIG: Record<number, boolean>;
+  UI_TESTS_WEB: Record<number, boolean>;
 }
 
 export const progressRouter = createTRPCRouter({

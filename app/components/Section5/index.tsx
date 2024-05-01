@@ -1,5 +1,6 @@
 "use client";
 
+import { getQuestsArray } from "@/app/lib/utils";
 import { useNetworkStore } from "@/lib/stores/network";
 import { cn } from "@/lib/utils";
 import { api } from "@/trpc/react";
@@ -114,6 +115,8 @@ export const Section5 = () => {
   const progressRouter = api.progress.getSolvedQuests.useQuery({
     userAddress: network.address ?? "",
   });
+
+  console.log('Arkanoid quests', Object.values(progressRouter.data?.quests?.ARKANOID || {}));
   return (
     <section
       className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
@@ -140,9 +143,7 @@ export const Section5 = () => {
             `Take part in the competition, created by another person and score at
         least 90000 point`,
           ]}
-          statuses={
-            progressRouter.data?.quests?.ARKANOID || [false, false, false, false, false]
-          }
+          statuses={getQuestsArray(progressRouter.data?.quests?.ARKANOID, 5)}
         />
         <TaskSection
           id={2}
@@ -152,7 +153,7 @@ export const Section5 = () => {
             "Play Randzu game in two (or more) differents rooms with opponent",
             `Win in Randzu game at least once`,
           ]}
-          statuses={progressRouter.data?.quests?.RANDZU || [false, false, false]}
+          statuses={getQuestsArray(progressRouter.data?.quests?.RANDZU, 3)}
         />
         <TaskSection
           id={3}
@@ -163,7 +164,7 @@ export const Section5 = () => {
             `Create you own lobby compete`,
             "Invite and play with another participants in your own lobby",
           ]}
-          statuses={progressRouter.data?.quests?.THIMBLERIG || [false, false, false, false]}
+          statuses={getQuestsArray(progressRouter.data?.quests?.THIMBLERIG, 4)}
         />
         <TaskSection
           id={4}
@@ -173,7 +174,7 @@ export const Section5 = () => {
             "Choose one game from games list and add it to your favorite games by clicking on heart on game card on main page",
             `Bridge and unbridge at least 50 MINA tests token`,
           ]}
-          statuses={progressRouter.data?.quests?.UI_TESTS_WEB || [false, false, false]}
+          statuses={getQuestsArray(progressRouter.data?.quests?.UI_TESTS_WEB, 3)}
         />
         <TaskSection
           id={5}
