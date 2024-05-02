@@ -78,7 +78,7 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
 export const Section4 = () => {
   const network = useNetworkStore();
   const progressRouter = api.progress.getSolvedQuests.useQuery({
-    userAddress: network.address ?? "",
+    userAddress: network.address ?? "None",
   });
 
   const quests = [

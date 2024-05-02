@@ -113,7 +113,7 @@ export const Section5 = () => {
   const network = useNetworkStore();
 
   const progressRouter = api.progress.getSolvedQuests.useQuery({
-    userAddress: network.address ?? "",
+    userAddress: network.address ?? "None",
   });
 
   console.log('Arkanoid quests', Object.values(progressRouter.data?.quests?.ARKANOID || {}));
