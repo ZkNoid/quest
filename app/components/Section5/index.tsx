@@ -134,7 +134,7 @@ export const Section5 = () => {
           tasks={[
             "Take part in three different competitions of the Arkanoid game. In each, score at least 90000 points",
             "Create your own competition in the Arkanoid game with a budget of 30 MINA",
-            `Create your own competition with the pre-registration feature in the \
+            `Create your own competition in the \
         Arkanoid game. Invite another participant of the testnet to register \
         and play there.`,
             `Participate in the competition with pre-registration, created by
@@ -171,7 +171,7 @@ export const Section5 = () => {
           tasks={[
             "Leave feedback and rate all the games from ZkNoid Game Store",
             "Choose one game from games list and add it to your favorite games by clicking on heart on game card on main page",
-            `Bridge and unbridge at least 50 MINA tests token`,
+            `Bridge at least 50 MINA tests token`,
           ]}
           statuses={getQuestsArray(progressRouter.data?.quests?.UI_TESTS_WEB, 3)}
         />
