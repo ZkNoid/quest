@@ -134,8 +134,8 @@ export const Section5 = () => {
           tasks={[
             "Take part in three different competitions of the Arkanoid game. In each, score at least 90000 points",
             "Create your own competition in the Arkanoid game with a budget of 30 MINA",
-            `Create your own competition with the pre-registration feature in the
-        Arkanoid game. Invite another participant of the testnet to register
+            `Create your own competition with the pre-registration feature in the \
+        Arkanoid game. Invite another participant of the testnet to register \
         and play there.`,
             `Participate in the competition with pre-registration, created by
         another person`,
