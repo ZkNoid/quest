@@ -160,7 +160,7 @@ export const Section6 = () => {
             title="Ui Tests Mobile"
             heading="To complete this quest you need to download Auro wallet to your mobile device"
             items={[
-              "Open our ZkApp in Aura Wallet App and test one or all games on mobile device",
+              "Open our ZkApp in Auro Wallet App and test one or all games on mobile device",
               "Describe your experience about mobile gaming in ZkNoid Quest page",
               "Report about all bugs and Broken buttons and not working features",
               "Suggest what could be improved in user experience and user interface in ZkNoid Quest page",
