@@ -136,8 +136,7 @@ export const Section5 = () => {
             "Create your own competition in the Arkanoid game with a budget of 30 MINA",
             `Create your own competition with the pre-registration feature in the
         Arkanoid game. Invite another participant of the testnet to register
-        and play there. The start of the competition must begin not later than
-        3 days before the end of the testnet.`,
+        and play there.`,
             `Participate in the competition with pre-registration, created by
         another person`,
             `Take part in the competition, created by another person and score at
