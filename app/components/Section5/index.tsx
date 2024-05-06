@@ -179,7 +179,7 @@ export const Section5 = () => {
           tasks={[
             "Leave feedback and rate all the games from ZkNoid Game Store",
             "Choose one game from games list and add it to your favorite games by clicking on heart on game card on main page",
-            `Bridge at least 50 MINA tests token`,
+            `Bridge at least 50 MINA tests token in one transaction`,
           ]}
           statuses={getQuestsArray(
             progressRouter.data?.quests?.UI_TESTS_WEB,
