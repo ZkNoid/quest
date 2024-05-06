@@ -83,8 +83,13 @@ export const Section4 = () => {
 
   const quests = [
     ...getQuestsArray(progressRouter.data?.quests?.ARKANOID ?? [], 5),
-    ...getQuestsArray(progressRouter.data?.quests?.RANDZU ?? [], 3),
-    ...getQuestsArray(progressRouter.data?.quests?.THIMBLERIG ?? [], 4),
+    ...getQuestsArray(progressRouter.data?.quests?.RANDZU ?? [], 3, {
+      0: 3,
+      1: 2
+    }),
+    ...getQuestsArray(progressRouter.data?.quests?.THIMBLERIG ?? [], 4, {
+      0: 3,
+    }),
     ...getQuestsArray(progressRouter.data?.quests?.UI_TESTS_WEB ?? [], 3),
   ];
 

@@ -116,7 +116,10 @@ export const Section5 = () => {
     userAddress: network.address ?? "None",
   });
 
-  console.log('Arkanoid quests', Object.values(progressRouter.data?.quests?.ARKANOID || {}));
+  console.log(
+    "Arkanoid quests",
+    Object.values(progressRouter.data?.quests?.ARKANOID || {})
+  );
   return (
     <section
       className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
@@ -152,7 +155,10 @@ export const Section5 = () => {
             "Play Randzu game in two (or more) differents rooms with opponent",
             `Win in Randzu game at least once`,
           ]}
-          statuses={getQuestsArray(progressRouter.data?.quests?.RANDZU, 3)}
+          statuses={getQuestsArray(progressRouter.data?.quests?.RANDZU, 3, {
+            0: 3,
+            1: 2,
+          })}
         />
         <TaskSection
           id={3}
@@ -163,7 +169,9 @@ export const Section5 = () => {
             `Create you own lobby`,
             "Invite and play with another participants in your own lobby",
           ]}
-          statuses={getQuestsArray(progressRouter.data?.quests?.THIMBLERIG, 4)}
+          statuses={getQuestsArray(progressRouter.data?.quests?.THIMBLERIG, 4, {
+            0: 3,
+          })}
         />
         <TaskSection
           id={4}
@@ -173,7 +181,10 @@ export const Section5 = () => {
             "Choose one game from games list and add it to your favorite games by clicking on heart on game card on main page",
             `Bridge at least 50 MINA tests token`,
           ]}
-          statuses={getQuestsArray(progressRouter.data?.quests?.UI_TESTS_WEB, 3)}
+          statuses={getQuestsArray(
+            progressRouter.data?.quests?.UI_TESTS_WEB,
+            3
+          )}
         />
         <TaskSection
           id={5}
