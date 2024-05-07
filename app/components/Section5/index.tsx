@@ -140,7 +140,7 @@ export const Section5 = () => {
             `Create your own competition in the \
         Arkanoid game. Invite another participant of the testnet to register \
         and play there.`,
-            `Participate in the competition, created by
+            `Participate in a competition, created by
         another person`,
             `Take part in the competition, created by another person and score at
         least 90000 point`,
