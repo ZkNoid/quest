@@ -113,7 +113,7 @@ export const Section3 = () => {
               transition={{ duration: 20, ease: "linear", repeat: Infinity }}
             ></MotionImage>
             <div className="absolute text-white text-[2.786875vw] flex items-center justify-center w-[12.659375vw] h-[12.659375vw] text-center leading-none">
-              500 $MINA
+              1000 $MINA
             </div>
           </div>
           <div className="bg-green rounded-[0.6vw] flex flex-col justify-center items-center px-[1.0625vw] relative overflow-hidden">
@@ -122,11 +122,9 @@ export const Section3 = () => {
               alt=""
               className="absolute w-[39.415625vw] left-[-5.3125vw] top-[-1.5625vw] z-1 max-w-none"
             ></Image>
-            <p className="text-[4.375vw] z-10">300 $MINA</p>
-            <p className="text-[1.5vw] font-roboto z-10 text-center">
-              Will be divided between from 1 to 5 people who will complete all
-              two levels of tasks: Main and Additional. The winners from this
-              category will be selected by the team.
+            <p className="text-[4.375vw] z-10">400 $MINA</p>
+            <p className="text-[1.5vw] font-semibold font-roboto z-10 text-center">
+              Will be divided between 3 people who will completed all tasks, report about bugs and actively participate in discord chat
             </p>
           </div>
           <div className="bg-violet rounded-[0.6vw] flex flex-col justify-center items-center px-[6.375vw] relative overflow-hidden">
@@ -136,10 +134,9 @@ export const Section3 = () => {
               className="absolute w-[51.32875vw] left-[-4.0625vw] top-[-1.5625vw] z-1 max-w-none"
             ></Image>
 
-            <p className="text-[4.375vw] z-10">200 $MINA</p>
-            <p className="text-[1.5vw] font-roboto z-10 text-center">
-              Will be shared among all participants of the testnet, who will
-              complete the tasks of the Main part.
+            <p className="text-[4.375vw] z-10">600 $MINA</p>
+            <p className="text-[1.5vw] font-semibold font-roboto z-10 text-center">
+              Split among all testers who earn at least 2250 points during the quest period
             </p>
           </div>
         </div>
@@ -147,10 +144,10 @@ export const Section3 = () => {
       <div className="w-[100vw] h-[3.75vw] bg-green text-dark text-[2vw] relative">
         <ParallaxText baseVelocity={4}>
           <div className="w-[200vw] h-full flex items-center absolute pl-10">
-            go to the moon with zknoid <Dots />
-            go to the moon with zknoid <Dots />
-            go to the moon with zknoid <Dots />
-            go to the moon with zknoid <Dots />
+            PLAY AND EARN WITH ZKNOID <Dots />
+            PLAY AND EARN WITH ZKNOID <Dots />
+            PLAY AND EARN WITH ZKNOID <Dots />
+            PLAY AND EARN WITH ZKNOID <Dots />
           </div>
         </ParallaxText>
       </div>

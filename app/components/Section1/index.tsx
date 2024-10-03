@@ -1,6 +1,6 @@
 "use client";
 
-import Medusa from "./assets/medusa.svg";
+import Medusa from "./assets/medusa-lottery.svg";
 import Image from "next/image";
 import { DateTime, DurationObjectUnits, Interval } from "luxon";
 import { useEffect, useState } from "react";
@@ -20,7 +20,7 @@ const ClockBlock = ({ number, label }: { number: number; label: string }) => {
 const TimerLabel = () => {
   return (
     <div className="bg-dark w-[50vw] h-[3.26vw]  rounded-[0.6vw] text-green font-arame flex items-center justify-center text-[3vw]">
-      TESTNET ENDED ON MAY 13TH
+      TESTNET START AT 14TH OCTOBER
     </div>
   );
 };
@@ -29,7 +29,7 @@ export function Section1() {
   const getTimeLeft = () => {
     return Interval.fromDateTimes(
       DateTime.now(),
-      DateTime.fromSQL("2024-05-13 17:00:00")
+      DateTime.fromSQL("2024-10-14 00:00:00"),
     )
       .toDuration(["days", "hours", "minutes", "seconds"])
       .toObject();
@@ -55,7 +55,7 @@ export function Section1() {
           alt={"Medusa"}
           className="mt-[-5vw] z-[-100] w-[66.8vw]"
         ></Image>
-        <div className="flex justify-center absolute bottom-[-1.5vw] w-full flex-col items-center gap-[0.8vw]">
+        <div className="flex justify-center absolute bottom-[-6vw] w-full flex-col items-center gap-[0.8vw]">
           <div className="flex gap-[1vw]">
             <ClockBlock number={eventEndsIn?.days ?? 0} label="Days" />
             <ClockBlock number={eventEndsIn?.hours ?? 0} label="Hours" />

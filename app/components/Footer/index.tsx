@@ -6,7 +6,7 @@ import { ConnectWallet } from "../ConnectWallet";
 
 export const Footer = () => {
   return (
-    <div className="w-full h-[9.125vw] bg-green flex flex-row justify-between py-[2.06vw] items-center">
+    <div className="w-full mt-[10vw] h-[9.125vw] bg-green flex flex-row justify-between py-[2.06vw] items-center">
       <Image
         src={LogoSVG}
         alt="logo"

@@ -9,6 +9,7 @@ import { ConnectWallet, WalletUpdater } from "../ConnectWallet";
 import { useNetworkStore } from "@/lib/stores/network";
 import { api } from "@/trpc/react";
 import { getQuestsArray } from "@/app/lib/utils";
+import Link from "next/link";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
   const step = stepRaw % 9;
@@ -56,7 +57,7 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
       <Image
         src={Vsign}
         alt="V-sign"
-        className="absolute right-0 w-[13.188vw] bottom-0 cursor-pointer"
+        className="absolute right-0 w-[13.188vw] bottom-0 cursor-pointer mr-[16.5vw]"
       />
       <div
         className={cn(
@@ -65,7 +66,7 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
           percent <= 33 && "bg-red",
           percent > 33 && "bg-gradient-to-r from-[#FF5B23] to-[#D4FF33]",
           to,
-          w
+          w,
         )}
       >
         {`${rank} ${percent}%`}
@@ -73,7 +74,6 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
     </div>
   );
 };
-
 
 export const Section4 = () => {
   const network = useNetworkStore();
@@ -85,7 +85,7 @@ export const Section4 = () => {
     ...getQuestsArray(progressRouter.data?.quests?.ARKANOID ?? [], 5),
     ...getQuestsArray(progressRouter.data?.quests?.RANDZU ?? [], 3, {
       0: 3,
-      1: 2
+      1: 2,
     }),
     ...getQuestsArray(progressRouter.data?.quests?.THIMBLERIG ?? [], 4, {
       0: 3,
@@ -96,7 +96,7 @@ export const Section4 = () => {
   console.log("Quests", quests);
 
   const progress = Math.ceil(
-    (8 * quests.filter(Boolean).length) / Number(process.env.QUESTS_NUM ?? 15)
+    (8 * quests.filter(Boolean).length) / Number(process.env.QUESTS_NUM ?? 15),
   );
 
   console.log(progress);
@@ -116,10 +116,44 @@ export const Section4 = () => {
           </p>
           <p className="leading-none">TASKS PROGRESS</p>
         </div>
-        {!network.address && (
+        {!network.address ? (
           <div>
             <ConnectWallet dark={true} />
           </div>
+        ) : (
+          <Link
+            className="w-[calc(16vw+0.375vw)] h-[calc(4.375vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group"
+            href={"/?page=leaderboard"}
+          >
+            <div
+              className={
+                "w-[16vw] h-[4.375vw] text-[1.042vw] font-medium rounded-[0.6vw] flex items-center justify-between font-roboto cursor-pointer group-hover:shadow-none group-hover:font-black bg-green text-[black] shadow-mainWhite pl-[1vw] pr-[0.4vw]"
+              }
+            >
+              <div>Show leaderboard</div>
+              <div
+                className={
+                  "w-[3.75vw] h-[3.75vw] rounded-[0.6vw] flex items-center justify-center pl-[0.25vw] bg-dark"
+                }
+              >
+                <svg
+                  className="w-[1.5vw]"
+                  width="24"
+                  height="39"
+                  viewBox="0 0 24 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 2L19.5 19.5L2 37"
+                    stroke={"#fffcf5"}
+                    stroke-width="5"
+                    className={"group-hover:stroke-green"}
+                  />
+                </svg>
+              </div>
+            </div>
+          </Link>
         )}
       </div>
       {network.address && <Progress step={progress} />}
