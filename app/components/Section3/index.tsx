@@ -96,14 +96,14 @@ const MotionImage = motion(Image);
 export const Section3 = () => {
   return (
     <section
-      className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]"
+      className="w-full flex flex-col items-center pt-[23.529vw] lg:!pt-[10vw] text-[white] font-arame px-[6.4vw]"
       id="section3"
     >
-      <div className="w-full text-[4.3vw]">
+      <div className="w-full text-[9.412vw] lg:!text-[4.3vw]">
         <p>GRAB</p>
         <p>REWARDS</p>
-        <div className="w-full grid grid-cols-2 h-[14.9375vw] mb-[4.3vw] mt-[2vw] gap-[1.25vw] text-dark relative">
-          <div className="absolute z-20 left-0 right-0 mx-auto top-[-6.3vw] w-[12.659375vw] h-[12.659375vw]">
+        <div className="w-full flex flex-col lg!:grid lg!:grid-cols-2 lg:!h-[14.9375vw] mb-[4.3vw] mt-[2vw] gap-[1.25vw] text-dark relative">
+          <div className="absolute z-20 left-0 right-0 ml-auto lg:!mx-auto top-[-6.3vw] w-[12.659375vw] h-[12.659375vw]">
             <MotionImage
               src={FlyerMiddle}
               alt=""
@@ -124,7 +124,8 @@ export const Section3 = () => {
             ></Image>
             <p className="text-[4.375vw] z-10">400 $MINA</p>
             <p className="text-[1.5vw] font-semibold font-roboto z-10 text-center">
-              Will be divided between 3 people who will completed all tasks, report about bugs and actively participate in discord chat
+              Will be divided between 3 people who will completed all tasks,
+              report about bugs and actively participate in discord chat
             </p>
           </div>
           <div className="bg-violet rounded-[0.6vw] flex flex-col justify-center items-center px-[6.375vw] relative overflow-hidden">
@@ -136,7 +137,8 @@ export const Section3 = () => {
 
             <p className="text-[4.375vw] z-10">600 $MINA</p>
             <p className="text-[1.5vw] font-semibold font-roboto z-10 text-center">
-              Split among all testers who earn at least 2250 points during the quest period
+              Split among all testers who earn at least 2250 points during the
+              quest period
             </p>
           </div>
         </div>

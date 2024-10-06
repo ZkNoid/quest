@@ -25,10 +25,10 @@ export const Topbar = () => {
     >
       <div
         className={cn(
-          "cursor-pointer w-[10.813vw] h-[2.5vw] flex items-center justify-center",
+          "cursor-pointer w-[35.294vw] lg:!w-[10.813vw] h-[9.412vw] lg:!h-[2.5vw] flex items-center justify-center",
           opened && "bg-violet rounded-t-[0.625vw]",
           !opened &&
-            "bg-dark border-green border-l border-b border-r rounded-b-[0.625vw]"
+            "bg-dark border-green border-l border-b border-r rounded-b-[2.353vw] lg:!rounded-b-[0.625vw]",
         )}
         onClick={() => setOpened(!opened)}
       >
@@ -39,7 +39,7 @@ export const Topbar = () => {
             viewBox="0 0 50 22"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-[3.125vw]"
+            className="w-[9.412vw] lg:w-[3.125vw]"
           >
             <rect width="50" height="4" fill="#FFFCF5" />
             <rect y="9" width="50" height="4" fill="#FFFCF5" />

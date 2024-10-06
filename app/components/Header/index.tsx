@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Header() {
   return (
-    <div className="w-full flex flex-row justify-between py-[2.06vw]">
+    <div className="w-full flex-row justify-between py-[2.06vw] hidden lg:!flex">
       <Image
         src={LogoSVG}
         alt="logo"
