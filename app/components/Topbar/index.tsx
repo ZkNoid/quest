@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Socials } from "../Socials";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -10,23 +10,41 @@ const MotionLink = motion(Link);
 
 export const Topbar = () => {
   const [opened, setOpened] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      window.innerWidth >= 1024 ? setIsMobile(false) : setIsMobile(true);
+    };
+    window.addEventListener("resize", checkIsMobile);
+    checkIsMobile();
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
+
   return (
     <motion.div
-      className="fixed top-0 z-50 flex flex-col items-center"
+      className={cn("fixed top-0 z-50 flex flex-col items-center", {
+        "flex-col-reverse lg:!flex-col": opened,
+      })}
       variants={{
-        open: {
-          y: 100,
-        },
-        closed: {
-          y: 0,
-        },
+        open: isMobile
+          ? { height: "auto" }
+          : {
+              y: 100,
+            },
+        closed: isMobile
+          ? { height: "9.412vw" }
+          : {
+              y: 0,
+            },
       }}
       animate={opened ? "open" : "closed"}
     >
       <div
         className={cn(
           "cursor-pointer w-[35.294vw] lg:!w-[10.813vw] h-[9.412vw] lg:!h-[2.5vw] flex items-center justify-center",
-          opened && "bg-violet rounded-t-[0.625vw]",
+          opened &&
+            "bg-violet rounded-b-[2.353vw] lg:!rounded-t-[0.625vw] lg:!rounded-b-none",
           !opened &&
             "bg-dark border-green border-l border-b border-r rounded-b-[2.353vw] lg:!rounded-b-[0.625vw]",
         )}
@@ -52,7 +70,7 @@ export const Topbar = () => {
             viewBox="0 0 25 25"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-[1.563vw]"
+            className="w-[5.882vw] lg:!w-[1.563vw]"
           >
             <path
               fill-rule="evenodd"
@@ -64,7 +82,7 @@ export const Topbar = () => {
         )}
       </div>
       {opened && (
-        <div className="w-[36.563vw] bg-violet text-dark rounded-[0.625vw] px-[0.938vw] py-[3.125vw] text-[2vw] font-arame font-thin flex flex-col divide-y">
+        <div className="w-[100vw] gap-[3.529vw] lg:!gap-0 lg:!w-[36.563vw] h-[80vh] lg:!h-auto bg-violet text-dark rounded-[2.353vw] lg:!rounded-[0.625vw] lg:!px-[0.938vw] p-[4.706vw] lg:!py-[3.125vw] text-[5.647vw] lg:!text-[2vw] font-arame font-thin flex flex-col divide-y">
           {[
             {
               name: "ZKNOID GAME APP",
@@ -92,8 +110,16 @@ export const Topbar = () => {
               href={x.href}
               target={!x.href.startsWith("#") ? "_blank" : undefined}
               rel="noopener noreferrer"
-              whileHover={{ fontSize: "2.5vw", color: "#3A39FF" }}
-              initial={{ fontSize: "2vw", color: "#00000" }}
+              whileHover={
+                isMobile
+                  ? { fontSize: "5.647vw" }
+                  : { fontSize: "2.5vw", color: "#3A39FF" }
+              }
+              initial={
+                isMobile
+                  ? { fontSize: "5.647vw" }
+                  : { fontSize: "2vw", color: "#00000" }
+              }
               onClick={() => {
                 setOpened(false);
               }}
