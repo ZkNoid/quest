@@ -1,7 +1,23 @@
 import { useNetworkStore } from "@/lib/stores/network";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { api } from "@/trpc/react";
+
+interface ILeaderboard {
+  userAddress: string;
+  score: number;
+}
 
 export default function Leaderboard() {
   const networkStore = useNetworkStore();
+  const getLeaderboardQuery = api.leaderboard.getLeaderboard.useQuery(
+    {},
+    { refetchInterval: 5000 },
+  );
+
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [leaderboard, setLeaderboard] = useState<ILeaderboard[]>([]);
 
   const formatAddress = (address: string | undefined, slices?: number) =>
     address
@@ -10,58 +26,63 @@ export default function Leaderboard() {
         address.slice(slices ? -slices : -15)
       : "None";
 
-  const leaderboard = [
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 11,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 22,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 99,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 3,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 82,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 1234,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 777,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 930,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 0,
-    },
-    {
-      userAddress: "B62qkV189rv4G3aUxj7nSCzn3bnDsZU8t9UCF2EhMQpnco7FBUain87",
-      score: 125,
-    },
-  ];
+  useEffect(() => {
+    const checkIsMobile = () => {
+      window.innerWidth >= 1024 ? setIsMobile(false) : setIsMobile(true);
+    };
+    window.addEventListener("resize", checkIsMobile);
+    checkIsMobile();
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
+
+  useEffect(() => {
+    if (getLeaderboardQuery?.data?.leaderboard) {
+      // @ts-ignore
+      setLeaderboard(getLeaderboardQuery.data.leaderboard);
+    }
+  }, [getLeaderboardQuery.data]);
 
   return (
     <section className={"flex flex-col gap-[1vw] w-full px-[6.4vw] pt-[10vw]"}>
+      <Link
+        href={"/"}
+        className={
+          "w-fit group border border-white hover:border-green hover:bg-green py-[1.882vw] px-[3.765vw] lg:!p-[0.521vw] gap-[1.882vw] lg:!gap-[0.521vw] rounded-[0.26vw] hover:text-[black] text-white flex justify-center items-center"
+        }
+      >
+        <svg
+          width="11"
+          height="17"
+          viewBox="0 0 11 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className={"w-[1.647vw] lg:!w-[0.573vw]"}
+        >
+          <path
+            d="M9.12915 1L1.87109 8.5L9.12915 16"
+            stroke="#FFFCF5"
+            stroke-width="2"
+            stroke-linecap="round"
+            className={"group-hover:stroke-dark"}
+          />
+        </svg>
+        <span
+          className={
+            "text-[3.294vw] lg:!text-[0.833vw] font-roboto font-medium"
+          }
+        >
+          Back
+        </span>
+      </Link>
       <div className={"flex flex-row justify-between items-center w-full"}>
-        <span className={"text-[3.646vw] font-arame text-white"}>
+        <span
+          className={"text-[9.412vw] lg:!text-[3.646vw] font-arame text-white"}
+        >
           LEADERBOARD
         </span>
         <div
           className={
-            "bg-green rounded-[0.26vw] px-[0.781vw] py-[0.417vw] flex flex-row justify-center items-center gap-[0.521vw]"
+            "bg-green hidden lg:!flex rounded-[0.26vw] px-[0.781vw] py-[0.417vw] flex-row justify-center items-center gap-[0.521vw]"
           }
         >
           <span
@@ -81,49 +102,81 @@ export default function Leaderboard() {
           </svg>
         </div>
       </div>
-      <div className={"grid grid-cols-5 py-[0.521vw]"}>
-        <span className={"text-[1.25vw] font-roboto font-medium text-white"}>
+      <div className={"grid grid-cols-4 lg:!grid-cols-5 py-[0.521vw]"}>
+        <span
+          className={
+            "text-[3.765vw] lg:!text-[1.25vw] font-roboto font-medium text-white"
+          }
+        >
           Rank
         </span>
         <span
           className={
-            "col-span-2 text-[1.25vw] font-roboto font-medium text-white"
+            "col-span-2 text-[3.765vw] lg:!text-[1.25vw] font-roboto font-medium text-white"
           }
         >
           Wallet Address
         </span>
-        <span className={"text-[1.25vw] font-roboto font-medium text-white"}>
+        <span
+          className={
+            "text-[3.765vw] lg:!text-[1.25vw] font-roboto font-medium text-white"
+          }
+        >
           Scores
         </span>
       </div>
-      <div className={"flex flex-col gap-[]"}>
+      <div className={"flex flex-col"}>
         {leaderboard
           .sort((a, b) => b.score - a.score)
+          .slice(0, 11)
           .map((item, index) => (
             <div
               key={index}
               className={
-                "grid grid-cols-5 py-[1.563vw] border-t last:border-b border-white"
+                "grid grid-cols-4 lg:!grid-cols-5 py-[1.563vw] border-t last:border-b border-white"
               }
             >
               <span
-                className={"text-[1.25vw] font-roboto font-medium text-white"}
+                className={cn(
+                  "text-[3.765vw] lg:!text-[1.25vw] font-roboto font-medium text-white",
+                  {
+                    "text-green":
+                      isMobile &&
+                      networkStore.address &&
+                      networkStore.address === item.userAddress,
+                  },
+                )}
               >
                 {index + 1}
               </span>
               <span
-                className={
-                  "col-span-2 text-[1.25vw] font-roboto font-medium text-white"
-                }
+                className={cn(
+                  "col-span-2 text-[3.765vw] lg:!text-[1.25vw] font-roboto font-medium text-white",
+                  {
+                    "text-green":
+                      isMobile &&
+                      networkStore.address &&
+                      networkStore.address === item.userAddress,
+                  },
+                )}
               >
-                {formatAddress(item.userAddress, 15)}
+                {formatAddress(item.userAddress, isMobile ? 6 : 15)}
               </span>
               <span
-                className={"text-[1.25vw] font-roboto font-medium text-white"}
+                className={cn(
+                  "text-[3.765vw] lg:!text-[1.25vw] font-roboto font-medium text-white",
+                  {
+                    "text-green":
+                      isMobile &&
+                      networkStore.address &&
+                      networkStore.address === item.userAddress,
+                  },
+                )}
               >
                 {item.score}
               </span>
-              {networkStore.address &&
+              {!isMobile &&
+                networkStore.address &&
                 networkStore.address === item.userAddress && (
                   <div
                     className={
@@ -143,7 +196,11 @@ export default function Leaderboard() {
                         fill="#D4FF33"
                       />
                     </svg>
-                    <span className={"text-[1.25vw] font-roboto text-green"}>
+                    <span
+                      className={
+                        "text-[3.765vw] lg:!text-[1.25vw] font-roboto text-green"
+                      }
+                    >
                       Your place
                     </span>
                   </div>

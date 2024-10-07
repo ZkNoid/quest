@@ -1,6 +1,7 @@
 import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 import { progressRouter } from "./routers/progress";
 import { feedbackRouter } from "./routers/feedback";
+import { leaderboardRouter } from "./routers/leaderboard";
 
 /**
  * This is the primary router for your server.
@@ -9,7 +10,8 @@ import { feedbackRouter } from "./routers/feedback";
  */
 export const appRouter = createTRPCRouter({
   progress: progressRouter,
-  feedback: feedbackRouter
+  feedback: feedbackRouter,
+  leaderboard: leaderboardRouter,
 });
 
 // export type definition of API
