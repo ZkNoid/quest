@@ -53,15 +53,15 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
   ][step];
 
   return (
-    <div className="h-[2.25vw] w-full bg-gradient-to-r from-[#FF5B238F] to-[#D4FF338F] rounded-[0.313vw] mt-[2.5vw] relative">
+    <div className="h-[8.471vw] lg:!h-[2.25vw] w-full bg-gradient-to-r from-[#FF5B238F] to-[#D4FF338F] rounded-[1.176vw] lg:!rounded-[0.313vw] mt-[2.5vw] relative">
       <Image
         src={Vsign}
         alt="V-sign"
-        className="absolute right-0 w-[13.188vw] bottom-0 cursor-pointer mr-[16.5vw]"
+        className="absolute hidden lg:!block right-0 w-[13.188vw] bottom-0 cursor-pointer mr-[16.5vw]"
       />
       <div
         className={cn(
-          "h-full rounded-[0.313vw] w-[11%]",
+          "h-full rounded-[1.176vw] lg:!rounded-[0.313vw] w-[11%] text-opacity-0 lg:!text-opacity-100",
           "flex items-center justify-end pr-[0.625vw] text-dark text-[1.25vw]",
           percent <= 33 && "bg-red",
           percent > 33 && "bg-gradient-to-r from-[#FF5B23] to-[#D4FF33]",
@@ -71,6 +71,9 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
       >
         {`${rank} ${percent}%`}
       </div>
+      <span
+        className={"text-[4.706vw] lg:hidden font-arame text-red"}
+      >{`${rank} ${percent} points`}</span>
     </div>
   );
 };
@@ -104,14 +107,14 @@ export const Section4 = () => {
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
       <WalletUpdater />
-      <div className="w-full text-[4.3vw] flex justify-between items-end">
+      <div className="w-full text-[9.412vw] lg:!text-[4.3vw] flex flex-col lg:!flex-row justify-between items-start lg:!items-end gap-[4.706vw] lg:!gap-0">
         <div>
           <p className="flex gap-[1.0625vw]">
             YOUR{" "}
             <Image
               src={Lightnings}
               alt="Lightnings"
-              className="w-[7.062vw]"
+              className="w-[14.588vw] lg:!w-[7.062vw]"
             ></Image>
           </p>
           <p className="leading-none">TASKS PROGRESS</p>
@@ -122,27 +125,27 @@ export const Section4 = () => {
           </div>
         ) : (
           <Link
-            className="w-[calc(16vw+0.375vw)] h-[calc(4.375vw+0.375vw)] hover:pt-[0.375vw] hover:pl-[0.375vw] group"
+            className="hidden lg:!block w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group"
             href={"/?page=leaderboard"}
           >
             <div
               className={
-                "w-[16vw] h-[4.375vw] text-[1.042vw] font-medium rounded-[0.6vw] flex items-center justify-between font-roboto cursor-pointer group-hover:shadow-none group-hover:font-black bg-green text-[black] shadow-mainWhite pl-[1vw] pr-[0.4vw]"
+                "w-[47.059vw] text-[3.765vw] lg:!text-[1.25vw] lg:!w-[16vw] h-[11.765vw] lg:!h-[4.375vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-between font-roboto cursor-pointer group-hover:shadow-none group-hover:font-black bg-green text-[black] shadow-mainWhite pl-[3.529vw] lg:!pl-[1vw] pr-[3.529vw] lg:!pr-[0.4vw]"
               }
             >
               <div>Show leaderboard</div>
               <div
                 className={
-                  "w-[3.75vw] h-[3.75vw] rounded-[0.6vw] flex items-center justify-center pl-[0.25vw] bg-dark"
+                  "w-[9.412vw] lg:!w-[3.75vw] h-[9.412vw] lg:!h-[3.75vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-center pl-[0.25vw] bg-dark"
                 }
               >
                 <svg
-                  className="w-[1.5vw]"
                   width="24"
                   height="39"
                   viewBox="0 0 24 39"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="lg:!w-[1.875vw] w-[6.118vw] lg:!h-[1.667vw] h-[5.176vw]"
                 >
                   <path
                     d="M2 2L19.5 19.5L2 37"
@@ -156,7 +159,44 @@ export const Section4 = () => {
           </Link>
         )}
       </div>
-      {network.address && <Progress step={progress} />}
+      {network.address && (
+        <>
+          <Progress step={progress} />
+          <Link
+            className="lg:!hidden w-full mt-[10vw] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group"
+            href={"/?page=leaderboard"}
+          >
+            <div
+              className={
+                "w-full text-[3.765vw] lg:!text-[1.25vw] lg:!w-[16vw] h-[11.765vw] lg:!h-[4.375vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-between font-roboto font-medium cursor-pointer group-hover:shadow-none group-hover:font-black bg-[#141414] border border-white text-white shadow-mainWhite pl-[3.529vw] lg:!pl-[1vw] pr-[3.529vw] lg:!pr-[0.4vw]"
+              }
+            >
+              <div>Show leaderboard</div>
+              <div
+                className={
+                  "w-[9.412vw] lg:!w-[3.75vw] h-[9.412vw] lg:!h-[3.75vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-center pl-[0.25vw] bg-green"
+                }
+              >
+                <svg
+                  width="24"
+                  height="39"
+                  viewBox="0 0 24 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="lg:!w-[1.875vw] w-[6.118vw] lg:!h-[1.667vw] h-[5.176vw]"
+                >
+                  <path
+                    d="M2 2L19.5 19.5L2 37"
+                    stroke={"#000"}
+                    stroke-width="5"
+                    className={"group-hover:stroke-green"}
+                  />
+                </svg>
+              </div>
+            </div>
+          </Link>
+        </>
+      )}
     </section>
   );
 };
