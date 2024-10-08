@@ -203,7 +203,12 @@ const TaskSection = ({
                   </span>
                 )}
                 {x.button && !statuses[i] && (
-                  <Link href={x.button.href} className={"w-fit group"}>
+                  <Link
+                    href={x.button.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={"w-fit group"}
+                  >
                     <div
                       className={
                         "py-[0.313vw] px-[0.521vw] gap-[0.521vw] flex flex-row items-center justify-center bg-[#000] rounded-[0.26vw]"
@@ -555,16 +560,16 @@ export const Section5 = () => {
               time: "1 min",
               points: 150,
               button: {
-                href: "#",
+                href: "https://x.com/intent/post?text=I%27ve%20bought%20a%20ticket%20in%20the%20lottery%20game%20on%20%40ZkNoid%20gaming%20platform%21%20Let%27s%20play%20together%21",
                 text: "Create tweet",
               },
             },
             {
-              text: "Tweet about your first rewards claim ",
+              text: "Tweet about your first rewards claim",
               time: "1 min",
               points: 200,
               button: {
-                href: "#",
+                href: "https://x.com/intent/post?text=Horray%21%20I%27ve%20claimed%20reward%20in%20lottery%20game%20on%20%40ZkNoid%20gaming%20platform%21%20Let%27s%20play%20together",
                 text: "Create tweet",
               },
             },
