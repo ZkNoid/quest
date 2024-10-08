@@ -1,3 +1,5 @@
+"use client";
+
 import { useNetworkStore } from "@/lib/stores/network";
 import Link from "next/link";
 import { useEffect, useState } from "react";

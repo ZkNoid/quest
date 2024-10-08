@@ -62,17 +62,6 @@ const TaskSection = ({
                 })}
               >
                 <div className="flex flex-col h-full items-center w-[1.875vw] relative">
-                  {/*{i != 0 && (*/}
-                  {/*  <div*/}
-                  {/*    className={cn(*/}
-                  {/*      "w-[1px] bg-green absolute bottom-[1.875vw] h-full",*/}
-                  {/*      statuses[i] ? "bg-green" : "bg-white",*/}
-                  {/*      statuses[i - 1] &&*/}
-                  {/*        !statuses[i] &&*/}
-                  {/*        "bg-gradient-to-t from-white to-green",*/}
-                  {/*    )}*/}
-                  {/*  />*/}
-                  {/*)}*/}
                   <svg
                     width="30"
                     height="31"
@@ -92,18 +81,6 @@ const TaskSection = ({
                       stroke-width="2"
                     />
                   </svg>
-                  {/*{i != tasks.length - 1 && (*/}
-                  {/*  <div*/}
-                  {/*    className={cn(*/}
-                  {/*      "w-[1px] bg-green absolute top-[1.875vw]",*/}
-                  {/*      last ? "h-[85%]" : "h-[calc(100%+2.5vw)]",*/}
-                  {/*      statuses[i] ? "bg-green" : "bg-white",*/}
-                  {/*      statuses[i - 1] &&*/}
-                  {/*        !statuses[i] &&*/}
-                  {/*        "bg-gradient-to-t from-white to-green",*/}
-                  {/*    )}*/}
-                  {/*  />*/}
-                  {/*)}*/}
                 </div>
               </div>
               <div
@@ -203,7 +180,11 @@ const TaskSection = ({
                   </span>
                 )}
                 {x.button && !statuses[i] && (
-                  <Link href={x.button.href} className={"w-fit group"}>
+                  <Link
+                    href={x.button.href}
+                    target={"_blank"}
+                    className={"w-fit group"}
+                  >
                     <div
                       className={
                         "py-[0.313vw] px-[0.521vw] gap-[0.521vw] flex flex-row items-center justify-center bg-[#000] rounded-[0.26vw]"
@@ -555,7 +536,7 @@ export const Section5 = () => {
               time: "1 min",
               points: 150,
               button: {
-                href: "#",
+                href: "https://twitter.com/intent/tweet?text=shareText\nshareLink",
                 text: "Create tweet",
               },
             },
@@ -564,7 +545,7 @@ export const Section5 = () => {
               time: "1 min",
               points: 200,
               button: {
-                href: "#",
+                href: "https://twitter.com/intent/tweet?text=shareText\nshareLink",
                 text: "Create tweet",
               },
             },
@@ -575,7 +556,7 @@ export const Section5 = () => {
             },
           ]}
           // statuses={getQuestsArray(progressRouter.data?.quests?.ARKANOID, 5)}
-          statuses={[true, true, false, true, false, true]}
+          statuses={[false, false, false, false, false, false]}
         />
         <TaskSection
           id={2}
@@ -654,7 +635,10 @@ export const Section5 = () => {
               text: "Fill out the Form",
               time: "10 min",
               points: 300,
-              button: { href: "#", text: "Fill the form" },
+              button: {
+                href: "https://docs.google.com/forms/d/1tRs_6GtrV7rgdl5e1jkHihLgiZrLv6vzO3dFYct-koQ",
+                text: "Fill the form",
+              },
               description:
                 "At the end of your ZkNoid journey, we would like you to fill out a form to give our team your honest feedback on your game experience during the testnet. Let us know what you liked or didn't like about it. We would greatly appreciate it if you shared your thoughts and ideas with us.",
             },

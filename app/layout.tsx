@@ -4,6 +4,7 @@ import "./globals.css";
 import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
 import { TRPCReactProvider } from "@/trpc/react";
+import { Suspense } from "react";
 
 const roboto = Roboto({
   variable: "--roboto",
@@ -58,7 +59,9 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${arame.variable} overflow-x-hidden bg-dark`}
       >
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
+        </TRPCReactProvider>
       </body>
     </html>
   );
