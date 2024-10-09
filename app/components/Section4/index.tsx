@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
-  const step = Math.round(stepRaw / Number(process.env.QUESTS_NUM ?? 14));
+  const step = Math.round((stepRaw / Number(process.env.QUESTS_NUM ?? 15)) * 8);
 
   const percents = [11, 22, 33, 44, 55, 66, 77, 88, 100];
   const percent = percents[step];
@@ -78,7 +78,7 @@ export const Section4 = () => {
     {
       refetchInterval: 5000,
     },
-  )
+  );
   const searchParams = useSearchParams();
   const page = searchParams.get("page");
 
@@ -114,9 +114,8 @@ export const Section4 = () => {
         score += taskScore > 0 ? 1 : 0;
       }
     }
-    setUserScore(score)
+    setUserScore(score);
   }, [progressRouter.data]);
-  
 
   return (
     <section

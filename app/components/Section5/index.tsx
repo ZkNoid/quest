@@ -28,14 +28,22 @@ const questTasks = [
         points: 20,
       },
       {
-        text: "Join ZkNoid Discord ",
+        text: "Join ZkNoid Discord",
         time: "1 min",
         points: 100,
+        button: {
+          href: "https://discord.com/invite/hndRCZwQnb",
+          text: "ZkNoid Discord",
+        },
       },
       {
-        text: "Subscribe to Twitter ",
+        text: "Subscribe to Twitter",
         time: "1 min",
         points: 100,
+        button: {
+          href: "https://twitter.com/ZkNoid",
+          text: "ZkNoid Twitter",
+        },
       },
       {
         text: "Tweet about your first ticket purchase",
@@ -60,7 +68,7 @@ const questTasks = [
         time: "2 min",
         points: 100,
       },
-    ]
+    ],
   },
   {
     name: "LOTTERY GAME",
@@ -69,6 +77,10 @@ const questTasks = [
         text: "Buy your First Ticket in Lottery Game",
         time: "3 min",
         points: 200,
+        button: {
+          href: "https://app.zknoid.io",
+          text: "Go to Game Store",
+        },
       },
       {
         text: "Buy 2 tickets with the same numbers in one Lottery Round",
@@ -162,11 +174,19 @@ const TaskSection = ({
 
   const network = useNetworkStore();
 
-  const progressRouter = api.progress.getSolvedQuests.useQuery({
-    userAddress: network.address ?? "None",
-  }, {
-    refetchInterval: 5000,
+  const progressRouter = api.progress.getSolvedQuests.useQuery(
+    {
+      userAddress: network.address ?? "None",
+    },
+    {
+      refetchInterval: 5000,
+    },
+  );
+
+  const getLeaderboardItemQuery = api.leaderboard.getLeaderboardItem.useQuery({
+    userAddress: network.address ?? "",
   });
+  const leaderboardItem = getLeaderboardItemQuery?.data;
 
   const statuses = Object.values(progressRouter.data?.quests?.[name] || {});
 
