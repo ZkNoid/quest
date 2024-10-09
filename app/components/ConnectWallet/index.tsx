@@ -44,7 +44,7 @@ export const ConnectWallet = ({
 
   return (
     <div
-      className="w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group"
+      className="w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:!pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:!pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
       onClick={() => {
         if (!networkStore.walletInstalled()) {
           window.open("https://www.aurowallet.com/", "_blank");
@@ -129,7 +129,7 @@ export const LinkButton = ({
       href={href}
       target={!href.startsWith("#") ? "_blank" : undefined}
       rel="noopener noreferrer"
-      className="w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group"
+      className="w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
     >
       <div
         className={cn(

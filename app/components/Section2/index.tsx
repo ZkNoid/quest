@@ -74,7 +74,7 @@ const Card = ({
       )}
       {!singlePage && (
         <div
-          className="absolute w-[calc(12.941vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[calc(12.941vw+1.882vw)] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group bottom-0 right-0 m-[2.824vw] lg:!m-[0.625vw]"
+          className="absolute w-[calc(12.941vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[calc(12.941vw+1.882vw)] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group bottom-0 right-0 m-[2.824vw] lg:!m-[0.625vw]"
           onClick={() => setExpanded(!expanded)}
         >
           <div
@@ -156,7 +156,7 @@ export const Section2 = () => {
             startAnimation={isInView}
           >
             <div className="flex gap-[1.875vw] pt-[4.471vw] lg:!pt-[1vw]">
-              <div className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[-[calc(11.765vw+1.882vw)]] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group">
+              <div className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[-[calc(11.765vw+1.882vw)]] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group">
                 <div className="w-[11.765vw] lg:!w-[4.125vw] h-[11.765vw] lg:!h-[4.125vw] bg-white rounded-[2.353vw] lg:!rounded-[0.6vw] shadow-main flex items-center justify-center cursor-pointer group-hover:shadow-none border-dark group-hover:border">
                   <svg
                     width="45"
@@ -174,7 +174,7 @@ export const Section2 = () => {
                   </svg>
                 </div>
               </div>
-              <div className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[-[calc(11.765vw+1.882vw)]] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group">
+              <div className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[-[calc(11.765vw+1.882vw)]] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group">
                 <div className="w-[11.765vw] lg:!w-[4.125vw] h-[11.765vw] lg:!h-[4.125vw] bg-white rounded-[2.353vw] lg:!rounded-[0.6vw] shadow-main flex items-center justify-center cursor-pointer group-hover:shadow-none border-dark group-hover:border group">
                   <svg
                     width="41"

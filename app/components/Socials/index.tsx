@@ -111,7 +111,7 @@ export const Socials = ({ showGithub }: { showGithub: boolean }) => {
           href={x!.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] pl-[1.882vw] lg:!hover:pl-[0.375vw] group"
+          className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:!pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
         >
           <div className="bg-[white] w-[11.765vw] lg:!w-[4.125vw] h-[11.765vw] lg:!h-[4.125vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-center shadow-main cursor-pointer group-hover:shadow-none group-hover:border group-hover:font-black">
             {x.svg}

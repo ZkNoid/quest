@@ -643,8 +643,8 @@ export const Section5 = () => {
   });
 
   console.log(
-    "Arkanoid quests",
-    Object.values(progressRouter.data?.quests?.ARKANOID || {}),
+    "Social quests",
+    Object.values(progressRouter.data?.quests?.SOCIAL || {}),
   );
   return (
     <section

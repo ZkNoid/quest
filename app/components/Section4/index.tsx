@@ -85,15 +85,15 @@ export const Section4 = () => {
   });
 
   const quests = [
-    ...getQuestsArray(progressRouter.data?.quests?.ARKANOID ?? [], 5),
-    ...getQuestsArray(progressRouter.data?.quests?.RANDZU ?? [], 3, {
+    ...getQuestsArray(progressRouter.data?.quests?.SOCIAL ?? [], 5),
+    ...getQuestsArray(progressRouter.data?.quests?.LOTTERY ?? [], 3, {
       0: 3,
       1: 2,
     }),
-    ...getQuestsArray(progressRouter.data?.quests?.THIMBLERIG ?? [], 4, {
+    ...getQuestsArray(progressRouter.data?.quests?.GIFT_CODES ?? [], 4, {
       0: 3,
     }),
-    ...getQuestsArray(progressRouter.data?.quests?.UI_TESTS_WEB ?? [], 3),
+    ...getQuestsArray(progressRouter.data?.quests?.FEEDBACK ?? [], 3),
   ];
 
   console.log("Quests", quests);
@@ -125,7 +125,7 @@ export const Section4 = () => {
           </div>
         ) : (
           <Link
-            className="hidden lg:!block w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group"
+            className="hidden lg:!block w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
             href={"/?page=leaderboard"}
           >
             <div
@@ -163,7 +163,7 @@ export const Section4 = () => {
         <>
           <Progress step={progress} />
           <Link
-            className="lg:!hidden w-full mt-[10vw] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:!hover:pt-[0.375vw] hover:pl-[1.882vw] lg:!hover:pl-[0.375vw] group"
+            className="lg:!hidden w-full mt-[10vw] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
             href={"/?page=leaderboard"}
           >
             <div
