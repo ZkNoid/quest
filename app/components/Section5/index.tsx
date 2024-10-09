@@ -156,7 +156,6 @@ const TaskSection = ({
     description?: string;
     button?: { href: string; text: string };
   }[];
-  statuses: boolean[];
   last?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -658,7 +657,6 @@ export const Section5 = () => {
             id={index + 1}
             name={item.name}
             tasks={item.tasks}
-            statuses={item.statuses}
             last={item.last}
           />
         ))}
