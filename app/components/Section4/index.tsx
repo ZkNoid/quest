@@ -10,6 +10,7 @@ import { useNetworkStore } from "@/lib/stores/network";
 import { api } from "@/trpc/react";
 import { getQuestsArray } from "@/app/lib/utils";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
   const step = stepRaw % 9;
@@ -83,6 +84,8 @@ export const Section4 = () => {
   const progressRouter = api.progress.getSolvedQuests.useQuery({
     userAddress: network.address ?? "None",
   });
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
 
   const quests = [
     ...getQuestsArray(progressRouter.data?.quests?.SOCIAL ?? [], 5),
@@ -105,7 +108,12 @@ export const Section4 = () => {
   console.log(progress);
 
   return (
-    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
+    <section
+      className={cn(
+        "w-full flex flex-col items-center lg:!pt-[10vw] text-[white] font-arame px-[6.4vw]",
+        { "pt-[40vw]": page === "leaderboard" },
+      )}
+    >
       <WalletUpdater />
       <div className="w-full text-[9.412vw] lg:!text-[4.3vw] flex flex-col lg:!flex-row justify-between items-start lg:!items-end gap-[4.706vw] lg:!gap-0">
         <div>
