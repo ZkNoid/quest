@@ -164,6 +164,8 @@ const TaskSection = ({
 
   const progressRouter = api.progress.getSolvedQuests.useQuery({
     userAddress: network.address ?? "None",
+  }, {
+    refetchInterval: 5000,
   });
 
   const statuses = Object.values(progressRouter.data?.quests?.[name] || {});
