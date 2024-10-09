@@ -129,34 +129,39 @@ export const LinkButton = ({
       href={href}
       target={!href.startsWith("#") ? "_blank" : undefined}
       rel="noopener noreferrer"
-      className="w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
     >
-      <div
-        className={cn(
-          "w-[47.059vw] lg:!w-[16vw] h-[11.765vw] lg:!h-[4.375vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-between font-roboto text-[3.765vw] lg:!text-[1.25vw] pl-[3.529vw] lg:!pl-[1vw] pr-[3.529vw] lg:!pr-[0.4vw] cursor-pointer group-hover:shadow-none group-hover:font-black",
-          "bg-[white] shadow-main group-hover:border",
-        )}
-      >
-        <div>{text ?? "Connect Wallet"}</div>
+      <div className="w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:!pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:!pl-[1.882vw] lg:hover:!pl-[0.375vw] group">
         <div
           className={cn(
-            "w-[9.412vw] lg:!w-[3.75vw] h-[9.412vw] lg:!h-[3.75vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-center pl-[0.25vw]",
-            bg,
+            "w-[47.059vw] lg:!w-[16vw] h-[11.765vw] lg:!h-[4.375vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-between font-roboto text-[3.765vw] lg:!text-[1.25vw] lg:!pl-[1vw] pr-[3.529vw] lg:!pr-[0.4vw] cursor-pointer group-hover:shadow-none group-hover:font-black",
+            "bg-[white] shadow-main group-hover:border",
           )}
         >
-          <svg
-            // className="w-[1.5vw]"
-            width="24"
-            height="39"
-            viewBox="0 0 24 39"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className={
-              "w-[3.529vw] lg:!w-[0.885vw] h-[7.059vw] lg:!h-[1.823vw]"
-            }
+          <div>{text ?? "Connect Wallet"}</div>
+          <div
+            className={cn(
+              "w-[9.412vw] lg:!w-[3.75vw] h-[9.412vw] lg:!h-[3.75vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-center pl-[0.25vw]",
+              bg,
+            )}
           >
-            <path d="M2 2L19.5 19.5L2 37" stroke={"#141414"} stroke-width="5" />
-          </svg>
+            <svg
+              // className="w-[1.5vw]"
+              width="24"
+              height="39"
+              viewBox="0 0 24 39"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={
+                "w-[3.529vw] lg:!w-[0.885vw] h-[7.059vw] lg:!h-[1.823vw]"
+              }
+            >
+              <path
+                d="M2 2L19.5 19.5L2 37"
+                stroke={"#141414"}
+                stroke-width="5"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </Link>
