@@ -7,6 +7,7 @@ import { api } from "@/trpc/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import TasksWatcher from "../TasksWatcher";
 
 const ticketNumber = 0;
 const ticketWin = 0;
@@ -59,8 +60,7 @@ const questTasks = [
         time: "2 min",
         points: 100,
       },
-    ],
-    statuses: [false, false, false, false, false, false],
+    ]
   },
   {
     name: "LOTTERY GAME",
@@ -91,7 +91,6 @@ const questTasks = [
         points: 300,
       },
     ],
-    statuses: [false, false, false, false, false],
   },
   {
     name: "GIFT CODE MECHANISM",
@@ -122,7 +121,6 @@ const questTasks = [
         points: 300,
       },
     ],
-    statuses: [false, false, false, false, false],
   },
   {
     name: "LEAVE FEEDBACK",
@@ -140,7 +138,6 @@ const questTasks = [
       },
     ],
     last: true,
-    statuses: [false],
   },
 ];
 
@@ -148,7 +145,6 @@ const TaskSection = ({
   id,
   name,
   tasks,
-  statuses,
   last,
 }: {
   id: number;
@@ -165,8 +161,17 @@ const TaskSection = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const network = useNetworkStore();
+
+  const progressRouter = api.progress.getSolvedQuests.useQuery({
+    userAddress: network.address ?? "None",
+  });
+
+  const statuses = Object.values(progressRouter.data?.quests?.[name] || {});
+
   return (
     <div>
+      <TasksWatcher />
       <div className="hidden w-full lg:!flex flex-row items-start">
         <div className="w-full flex items-center text-[3.125vw] gap-[0.625vw]">
           <div className="bg-green w-[2.5vw] h-[2.5vw] rounded-[0.313vw] flex items-center justify-center text-dark">
@@ -636,16 +641,6 @@ const TaskSection = ({
 };
 
 export const Section5 = () => {
-  const network = useNetworkStore();
-
-  const progressRouter = api.progress.getSolvedQuests.useQuery({
-    userAddress: network.address ?? "None",
-  });
-
-  console.log(
-    "Social quests",
-    Object.values(progressRouter.data?.quests?.SOCIAL || {}),
-  );
   return (
     <section
       className="w-full flex flex-col items-center pt-[25vw] lg:!pt-[10vw] text-[white] font-arame px-[6.4vw]"
