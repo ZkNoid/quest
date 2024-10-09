@@ -318,7 +318,8 @@ const TaskSection = ({
                 {x.button && !statuses[i] && (
                   <Link
                     href={x.button.href}
-                    target={"_blank"}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={"w-fit group"}
                   >
                     <div
