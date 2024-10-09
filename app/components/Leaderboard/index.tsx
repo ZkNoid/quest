@@ -52,6 +52,7 @@ export default function Leaderboard() {
     <section className={"flex flex-col gap-[1vw] w-full px-[6.4vw] pt-[10vw]"}>
       <Link
         href={"/"}
+        scroll={false}
         className={
           "w-fit group border border-white hover:border-green hover:bg-green py-[1.882vw] px-[3.765vw] lg:!p-[0.521vw] gap-[1.882vw] lg:!gap-[0.521vw] rounded-[0.26vw] hover:text-[black] text-white flex justify-center items-center"
         }

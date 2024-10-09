@@ -172,6 +172,7 @@ export const Section4 = () => {
           <Progress step={progress} />
           <Link
             className="lg:!hidden w-full mt-[10vw] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
+            scroll={false}
             href={"/?page=leaderboard"}
           >
             <div

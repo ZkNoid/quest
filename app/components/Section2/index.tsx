@@ -156,7 +156,10 @@ export const Section2 = () => {
             startAnimation={isInView}
           >
             <div className="flex gap-[1.875vw] pt-[4.471vw] lg:!pt-[1vw]">
-              <div className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[-[calc(11.765vw+1.882vw)]] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group">
+              <Link
+                className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[-[calc(11.765vw+1.882vw)]] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
+                href={"https://discord.com/invite/hndRCZwQnb"}
+              >
                 <div className="w-[11.765vw] lg:!w-[4.125vw] h-[11.765vw] lg:!h-[4.125vw] bg-white rounded-[2.353vw] lg:!rounded-[0.6vw] shadow-main flex items-center justify-center cursor-pointer group-hover:shadow-none border-dark group-hover:border">
                   <svg
                     width="45"
@@ -173,8 +176,11 @@ export const Section2 = () => {
                     />
                   </svg>
                 </div>
-              </div>
-              <div className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[-[calc(11.765vw+1.882vw)]] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group">
+              </Link>
+              <Link
+                href={"https://t.me/ZkNoid"}
+                className="w-[calc(11.765vw+1.882vw)] lg:!w-[calc(4.125vw+0.375vw)] h-[-[calc(11.765vw+1.882vw)]] lg:!h-[calc(4.125vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
+              >
                 <div className="w-[11.765vw] lg:!w-[4.125vw] h-[11.765vw] lg:!h-[4.125vw] bg-white rounded-[2.353vw] lg:!rounded-[0.6vw] shadow-main flex items-center justify-center cursor-pointer group-hover:shadow-none border-dark group-hover:border group">
                   <svg
                     width="41"
@@ -193,7 +199,7 @@ export const Section2 = () => {
                     />
                   </svg>
                 </div>
-              </div>
+              </Link>
             </div>
           </Card>
           <Card
@@ -221,16 +227,16 @@ export const Section2 = () => {
             <p>
               1. Open Mina{" "}
               <Link
-                href="https://berkeley.minaexplorer.com/faucet"
+                href="https://faucet.minaprotocol.com/"
                 className="underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Berkeley
+                Devnet
               </Link>{" "}
               faucet{" "}
             </p>
-            <p>2. Request Mina Berkeley tokens</p>
+            <p>2. Request Mina Devnet tokens</p>
             <p>
               3. Head to{" "}
               <Link
@@ -242,8 +248,8 @@ export const Section2 = () => {
                 ZkNoid
               </Link>{" "}
             </p>
-            <p>4. Switch to berkeley network</p>
-            <p>5. Click top-up button in the header and use bridge</p>
+            <p>4. Switch to devnet network</p>
+            <p>5. Click the top-up button in the header and bridge tokens</p>
           </Card>
           <Card
             title="CHALLENGE"
@@ -258,7 +264,7 @@ export const Section2 = () => {
             <p className="pt-[2vw]">Fill the form after completed tasks</p>
             <LinkButton
               text="Fill the form"
-              href="https://61s1tas45rv.typeform.com/to/WTz77lcM"
+              href="https://docs.google.com/forms/d/1tRs_6GtrV7rgdl5e1jkHihLgiZrLv6vzO3dFYct-koQ"
               bg="bg-violet"
             />
           </Card>
