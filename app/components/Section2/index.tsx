@@ -141,7 +141,7 @@ export const Section2 = () => {
     >
       <div className="w-full text-[9.412vw] lg:!text-[4.3vw]">
         <p>HOW</p>
-        <p>TO TAKE A PART?</p>
+        <p>TO TAKE PART?</p>
         <div
           className="w-full flex flex-col lg:!grid gap-[3.529vw] lg:!gap-0 lg:!grid-cols-4 lg:!h-[34vw] lg:!mb-[4.3vw] mt-[2vw]"
           ref={ref}
