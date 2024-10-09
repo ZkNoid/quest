@@ -10,12 +10,14 @@ import { useNetworkStore } from "@/lib/stores/network";
 import { api } from "@/trpc/react";
 import { getQuestsArray } from "@/app/lib/utils";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
-  const step = stepRaw % 9;
+  const step = Math.round(stepRaw / Number(process.env.QUESTS_NUM ?? 14));
 
   const percents = [11, 22, 33, 44, 55, 66, 77, 88, 100];
   const percent = percents[step];
+
   const w = {
     11: "w-[11%]",
     22: "w-[22%]",
@@ -40,18 +42,6 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
     100: "from-[0%]",
   }[percent];
 
-  const rank = [
-    "BEGGINER",
-    "YOUNG SNAKE",
-    "ACTIVE SNAKE",
-    "LUCKY SNAKE",
-    "THE SNAKE SQUIRE",
-    "THE KNIGHTED SNAKE",
-    "STRONG WARRIOR SNAKE",
-    "THE KING COBRA",
-    "WISE SNAKE",
-  ][step];
-
   return (
     <div className="h-[8.471vw] lg:!h-[2.25vw] w-full bg-gradient-to-r from-[#FF5B238F] to-[#D4FF338F] rounded-[1.176vw] lg:!rounded-[0.313vw] mt-[2.5vw] relative">
       <Image
@@ -69,40 +59,43 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
           w,
         )}
       >
-        {`${rank} ${percent}%`}
+        {`${stepRaw} POINTS`}
       </div>
       <span
         className={"text-[4.706vw] lg:hidden font-arame text-red"}
-      >{`${rank} ${percent} points`}</span>
+      >{`${stepRaw} POINTS`}</span>
     </div>
   );
 };
 
 export const Section4 = () => {
   const network = useNetworkStore();
-  const progressRouter = api.progress.getSolvedQuests.useQuery({
-    userAddress: network.address ?? "None",
-  });
-
-  const quests = [
-    ...getQuestsArray(progressRouter.data?.quests?.SOCIAL ?? [], 5),
-    ...getQuestsArray(progressRouter.data?.quests?.LOTTERY ?? [], 3, {
-      0: 3,
-      1: 2,
-    }),
-    ...getQuestsArray(progressRouter.data?.quests?.GIFT_CODES ?? [], 4, {
-      0: 3,
-    }),
-    ...getQuestsArray(progressRouter.data?.quests?.FEEDBACK ?? [], 3),
-  ];
-
-  console.log("Quests", quests);
-
-  const progress = Math.ceil(
-    (8 * quests.filter(Boolean).length) / Number(process.env.QUESTS_NUM ?? 15),
+  const progressRouter = api.progress.getSolvedQuests.useQuery(
+    {
+      userAddress: network.address ?? "None",
+    },
+    {
+      refetchInterval: 5000,
+    },
   );
 
-  console.log(progress);
+  const [userScore, setUserScore] = useState(0);
+
+  useEffect(() => {
+    let score = 0;
+    for (let prop in progressRouter.data?.quests) {
+      console.log("Processing prop", prop);
+      const questSectionName = progressRouter.data?.quests[prop];
+      for (let taskProp in questSectionName) {
+        console.log("Processing task prop", taskProp);
+        const taskScore = progressRouter.data?.quests[prop][taskProp];
+        console.log("Got task score", taskScore);
+        score += taskScore > 0 ? 1 : 0;
+      }
+    }
+    setUserScore(score)
+  }, [progressRouter.data]);
+  
 
   return (
     <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
@@ -161,7 +154,7 @@ export const Section4 = () => {
       </div>
       {network.address && (
         <>
-          <Progress step={progress} />
+          <Progress step={userScore} />
           <Link
             className="lg:!hidden w-full mt-[10vw] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
             href={"/?page=leaderboard"}
