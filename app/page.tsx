@@ -6,7 +6,6 @@ import { Section2 } from "./components/Section2";
 import { Section3 } from "./components/Section3";
 import { Section4 } from "./components/Section4";
 import { Section5 } from "./components/Section5";
-import { Section6 } from "./components/Section6";
 import { Footer } from "./components/Footer";
 import { Topbar } from "./components/Topbar";
 import { useSearchParams } from "next/navigation";
@@ -20,10 +19,20 @@ export default function Home() {
       <Topbar />
       <Header />
       <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
-      {page === "leaderboard" ? <Leaderboard /> : <Section5 />}
+
+      {page === "leaderboard" ? (
+        <>
+          <Section4 />
+          <Leaderboard />
+        </>
+      ) : (
+        <>
+          <Section2 />
+          <Section3 />
+          <Section4 />
+          <Section5 />
+        </>
+      )}
       {/*<Section6 />*/}
       <Footer />
     </main>

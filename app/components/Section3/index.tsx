@@ -124,8 +124,8 @@ export const Section3 = () => {
             ></Image>
             <p className="text-[9.412vw] lg:!text-[4.375vw] z-10">400 $MINA</p>
             <p className="text-[4.235vw] lg:!text-[1.5vw] font-semibold font-roboto z-10 text-center">
-              Will be divided between 3 people who will completed all tasks,
-              report about bugs and actively participate in discord chat
+              Will be divided between top-3 participants who completed all
+              tasks, reported bugs, and actively participated in discord chat
             </p>
           </div>
           <div className="bg-violet rounded-[2.353vw] lg:!rounded-[0.6vw] flex flex-col justify-center items-center px-[4.235vw] lg:!px-[1.0625vw] py-[7.059vw] lg:!py-0 relative overflow-hidden">

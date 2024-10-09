@@ -11,6 +11,7 @@ import { api } from "@/trpc/react";
 import { getQuestsArray } from "@/app/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
   const step = Math.round(stepRaw / Number(process.env.QUESTS_NUM ?? 14));
@@ -77,6 +78,26 @@ export const Section4 = () => {
     {
       refetchInterval: 5000,
     },
+  )
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
+
+  const quests = [
+    ...getQuestsArray(progressRouter.data?.quests?.SOCIAL ?? [], 5),
+    ...getQuestsArray(progressRouter.data?.quests?.LOTTERY ?? [], 3, {
+      0: 3,
+      1: 2,
+    }),
+    ...getQuestsArray(progressRouter.data?.quests?.GIFT_CODES ?? [], 4, {
+      0: 3,
+    }),
+    ...getQuestsArray(progressRouter.data?.quests?.FEEDBACK ?? [], 3),
+  ];
+
+  console.log("Quests", quests);
+
+  const progress = Math.ceil(
+    (8 * quests.filter(Boolean).length) / Number(process.env.QUESTS_NUM ?? 15),
   );
 
   const [userScore, setUserScore] = useState(0);
@@ -98,7 +119,12 @@ export const Section4 = () => {
   
 
   return (
-    <section className="w-full flex flex-col items-center pt-[10vw] text-[white] font-arame px-[6.4vw]">
+    <section
+      className={cn(
+        "w-full flex flex-col items-center lg:!pt-[10vw] text-[white] font-arame px-[6.4vw]",
+        { "pt-[40vw]": page === "leaderboard" },
+      )}
+    >
       <WalletUpdater />
       <div className="w-full text-[9.412vw] lg:!text-[4.3vw] flex flex-col lg:!flex-row justify-between items-start lg:!items-end gap-[4.706vw] lg:!gap-0">
         <div>
