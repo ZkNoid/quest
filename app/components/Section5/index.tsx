@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { api } from "@/trpc/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TasksWatcher from "../TasksWatcher";
 
 const ticketNumber = 0;
@@ -183,12 +183,24 @@ const TaskSection = ({
     },
   );
 
-  const getLeaderboardItemQuery = api.leaderboard.getLeaderboardItem.useQuery({
-    userAddress: network.address ?? "",
-  });
-  const leaderboardItem = getLeaderboardItemQuery?.data;
-
   const statuses = Object.values(progressRouter.data?.quests?.[name] || {});
+
+  // const setLeaderboardItemMutation =
+  //   api.leaderboard.setLeaderboardItem.useMutation();
+
+  // useEffect(() => {
+  //   tasks.map((task, taskIndex) => {
+  //     statuses[taskIndex] &&
+  //       setLeaderboardItemMutation.mutate({
+  //         userAddress: network.address || "NONE",
+  //         score: {
+  //           tasksSectionName: name,
+  //           taskIndex: taskIndex,
+  //           points: task.points,
+  //         },
+  //       });
+  //   });
+  // }, []);
 
   return (
     <div>

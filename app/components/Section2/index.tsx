@@ -218,7 +218,7 @@ export const Section2 = () => {
           <Card
             title="GET TOKENS"
             text="During all testnet you can use test MINA token, they can be
-            received in the official faucet in Berkley Chain"
+            received in the official faucet in Devnet Network"
             index={3}
             bg="bg-red"
             textBg="text-[rgb(234,62,38)]"
