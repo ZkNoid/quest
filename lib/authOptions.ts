@@ -18,18 +18,7 @@ export const authOptions: NextAuthOptions = {
     async signIn({ account }) {
       if (!account) return false;
 
-      const discordToken = account.access_token;
-
-      // const user = await fetch(`https://discord.com/api/users/@me`, {
-      //   method: "GET",
-      //   headers: {
-      //     Authorization: `Bearer ${discordToken}`,
-      //   },
-      // }).then((res) => res.json());
-
-      // if (user['id']) {
-      //   return true;
-      // };
+      //
 
       return true;
     },
