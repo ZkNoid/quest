@@ -41,7 +41,7 @@ export const useNetworkStore = create<NetworkState, [["zustand/immer", never]]>(
         state.walletConnected = !!address;
       });
     },
-    async connectWallet(soft: boolean) {
+    async connectWallet(soft: boolean | undefined) {
       if (soft) {
         if (localStorage.minaAdderess) {
           this.onWalletConnected(localStorage.minaAdderess);
