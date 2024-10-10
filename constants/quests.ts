@@ -10,7 +10,6 @@ const tweetTextBuy =
 const tweetTextWin = `I won ${ticketWin} $MINA in @ZkNoid Lottery Game in round X!\n
 Try your luck in the most honest Lottery: https://app.zknoid.io/games/lottery/global`;
 
-
 export const questTasks = [
   {
     name: "SOCIAL TASKS",
@@ -167,3 +166,7 @@ export const questTasks = [
     last: true,
   },
 ];
+
+export const TOTAL_QUEST_POINTS = questTasks
+  .flatMap((x) => x.tasks.map((x) => x.points))
+  .reduce((x, y) => x + y, 0);

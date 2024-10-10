@@ -12,9 +12,10 @@ import { getQuestsArray } from "@/app/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { questTasks, TOTAL_QUEST_POINTS } from "@/constants/quests";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
-  const step = Math.round((stepRaw / Number(process.env.QUESTS_NUM ?? 15)) * 8);
+  const step = Math.round((stepRaw / TOTAL_QUEST_POINTS) * 8);
 
   const percents = [11, 22, 33, 44, 55, 66, 77, 88, 100];
   const percent = percents[step];
@@ -82,37 +83,23 @@ export const Section4 = () => {
   const searchParams = useSearchParams();
   const page = searchParams?.get("page");
 
-  const quests = [
-    ...getQuestsArray(progressRouter.data?.quests?.SOCIAL ?? [], 5),
-    ...getQuestsArray(progressRouter.data?.quests?.LOTTERY ?? [], 3, {
-      0: 3,
-      1: 2,
-    }),
-    ...getQuestsArray(progressRouter.data?.quests?.GIFT_CODES ?? [], 4, {
-      0: 3,
-    }),
-    ...getQuestsArray(progressRouter.data?.quests?.FEEDBACK ?? [], 3),
-  ];
-
-  console.log("Quests", quests);
-
-  const progress = Math.ceil(
-    (8 * quests.filter(Boolean).length) / Number(process.env.QUESTS_NUM ?? 15),
-  );
-
   const [userScore, setUserScore] = useState(0);
 
   useEffect(() => {
     let score = 0;
+    let sectionId = 0;
     for (let prop in progressRouter.data?.quests) {
       console.log("Processing prop", prop);
       const questSectionName = progressRouter.data?.quests[prop];
+      let taskId = 0;
       for (let taskProp in questSectionName) {
         console.log("Processing task prop", taskProp);
         const taskScore = progressRouter.data?.quests[prop][taskProp];
         console.log("Got task score", taskScore);
-        score += taskScore > 0 ? 1 : 0;
+        score += taskScore > 0 ? questTasks[sectionId].tasks[taskId].points : 0;
+        taskId++;
       }
+      sectionId++;
     }
     setUserScore(score);
   }, [progressRouter.data]);
