@@ -8,7 +8,7 @@ export const authOptions: NextAuthOptions = {
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID as string,
       clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
-      authorization: `https://discord.com/api/oauth2/authorize?scope=identify+email&redirect_uri=${encodeURI(redirectUri)}/api%/auth/callback/discord`
+      authorization: `https://discord.com/api/oauth2/authorize?scope=identify+email&redirect_uri=${encodeURI(redirectUri)}/api/auth/callback/discord`
     }),
   ],
   callbacks: {
@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
       //   return true;
       // };
 
-      return false;
+      return true;
     },
 
     async jwt({ token, account }) {
