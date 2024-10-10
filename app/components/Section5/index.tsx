@@ -75,6 +75,10 @@ const TaskSection = ({
     },
   );
 
+  useEffect(() => {
+    progressRouter.refetch();
+  }, [network.address]);
+
   const statuses = Object.values(progressRouter.data?.quests?.[name] || {});
 
   // const setLeaderboardItemMutation =

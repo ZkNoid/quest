@@ -80,6 +80,11 @@ export const Section4 = () => {
       refetchInterval: 5000,
     },
   );
+
+  useEffect(() => {
+    progressRouter.refetch()
+  }, [network.address])
+
   const searchParams = useSearchParams();
   const page = searchParams?.get("page");
 
