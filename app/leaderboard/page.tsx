@@ -1,15 +1,15 @@
 "use client";
 
-import Header from "@/app/components/Header";
-import { Section1 } from "@/app/components/Section1";
-import { Section2 } from "@/app/components/Section2";
-import { Section3 } from "@/app/components/Section3";
-import { Section4 } from "@/app/components/Section4";
-import { Section5 } from "@/app/components/Section5";
-import { Footer } from "@/app/components/Footer";
-import { Topbar } from "@/app/components/Topbar";
+import Header from "@/components/Header";
+import { Section1 } from "@/components/Section1";
+import { Section2 } from "@/components/Section2";
+import { Section3 } from "@/components/Section3";
+import { Section4 } from "@/components/Section4";
+import { Section5 } from "@/components/Section5";
+import { Footer } from "@/components/Footer";
+import { Topbar } from "@/components/Topbar";
 
-import Leaderboard from "@/app/components/Leaderboard";
+import Leaderboard from "@/components/Leaderboard";
 
 export default function Home() {
   return (
