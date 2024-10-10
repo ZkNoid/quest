@@ -90,7 +90,7 @@ export const progressRouter = createTRPCRouter({
           { address: input.userAddress },
           {
             $set: {
-              user: session.user,
+              discordUser: session.user,
               [`statuses.${section}.${connectTaskId}`]: true,
             },
             $inc: {
@@ -179,7 +179,7 @@ export const progressRouter = createTRPCRouter({
           { address: input.userAddress },
           {
             $set: {
-              user: session.user,
+              twitterUser: session.user,
               [`statuses.${section}.${connectTaskId}`]: true,
             },
             $inc: {
