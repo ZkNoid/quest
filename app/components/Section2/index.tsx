@@ -249,7 +249,6 @@ export const Section2 = () => {
               </Link>{" "}
             </p>
             <p>4. Switch to devnet network</p>
-            <p>5. Click the top-up button in the header and bridge tokens</p>
           </Card>
           <Card
             title="CHALLENGE"
