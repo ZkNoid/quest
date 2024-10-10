@@ -9,6 +9,7 @@ import { Section5 } from "@/app/components/Section5";
 import { Footer } from "@/app/components/Footer";
 import { Topbar } from "@/app/components/Topbar";
 
+import Leaderboard from "@/app/components/Leaderboard";
 
 export default function Home() {
   return (
@@ -17,12 +18,9 @@ export default function Home() {
       <Header />
       <Section1 />
 
-      <Section2 />
-      <Section3 />
       <Section4 />
-      <Section5 />
+      <Leaderboard />
 
-      {/*<Section6 />*/}
       <Footer />
     </main>
   );

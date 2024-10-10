@@ -81,7 +81,7 @@ export default function Leaderboard() {
           Back
         </span>
       </Link>
-      <div className={"flex flex-row justify-between items-center w-full"}>
+      <div className={"flex flex-row justify-between items-center w-full"} id="leaderboard">
         <span
           className={"text-[9.412vw] lg:!text-[3.646vw] font-arame text-white"}
         >
