@@ -70,7 +70,11 @@ const Progress = ({ step: stepRaw }: { step: number }) => {
   );
 };
 
-export const Section4 = () => {
+export const Section4 = ({
+  goToLeaderboardButton,
+}: {
+  goToLeaderboardButton: boolean;
+}) => {
   const network = useNetworkStore();
   const progressRouter = api.progress.getSolvedQuests.useQuery(
     {
@@ -82,8 +86,8 @@ export const Section4 = () => {
   );
 
   useEffect(() => {
-    progressRouter.refetch()
-  }, [network.address])
+    progressRouter.refetch();
+  }, [network.address]);
 
   const searchParams = useSearchParams();
   const page = searchParams?.get("page");
@@ -113,7 +117,7 @@ export const Section4 = () => {
     <section
       className={cn(
         "w-full flex flex-col items-center lg:!pt-[10vw] text-[white] font-arame px-[6.4vw]",
-        { "pt-[40vw]": page === "leaderboard" },
+        { "pt-[40vw]": !goToLeaderboardButton },
       )}
     >
       <WalletUpdater />
@@ -134,39 +138,41 @@ export const Section4 = () => {
             <ConnectWallet dark={true} />
           </div>
         ) : (
-          <Link
-            className="hidden lg:!block w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
-            href={"/leaderboard#leaderboard"}
-          >
-            <div
-              className={
-                "w-[47.059vw] text-[3.765vw] lg:!text-[1.25vw] lg:!w-[16vw] h-[11.765vw] lg:!h-[4.375vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-between font-roboto cursor-pointer group-hover:shadow-none group-hover:font-black bg-green text-[black] shadow-mainWhite pl-[3.529vw] lg:!pl-[1vw] pr-[3.529vw] lg:!pr-[0.4vw]"
-              }
+          goToLeaderboardButton && (
+            <Link
+              className="hidden lg:!block w-[calc(47.059vw+1.882vw)] lg:!w-[calc(16vw+0.375vw)] h-[calc(11.765vw+1.882vw)] lg:!h-[calc(4.375vw+0.375vw)] hover:pt-[1.882vw] lg:hover:!pt-[0.375vw] hover:pl-[1.882vw] lg:hover:!pl-[0.375vw] group"
+              href={"/leaderboard#leaderboard"}
             >
-              <div>Show leaderboard</div>
               <div
                 className={
-                  "w-[9.412vw] lg:!w-[3.75vw] h-[9.412vw] lg:!h-[3.75vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-center pl-[0.25vw] bg-dark"
+                  "w-[47.059vw] text-[3.765vw] lg:!text-[1.25vw] lg:!w-[16vw] h-[11.765vw] lg:!h-[4.375vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-between font-roboto cursor-pointer group-hover:shadow-none group-hover:font-black bg-green text-[black] shadow-mainWhite pl-[3.529vw] lg:!pl-[1vw] pr-[3.529vw] lg:!pr-[0.4vw]"
                 }
               >
-                <svg
-                  width="24"
-                  height="39"
-                  viewBox="0 0 24 39"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="lg:!w-[1.875vw] w-[6.118vw] lg:!h-[1.667vw] h-[5.176vw]"
+                <div>Show leaderboard</div>
+                <div
+                  className={
+                    "w-[9.412vw] lg:!w-[3.75vw] h-[9.412vw] lg:!h-[3.75vw] rounded-[2.353vw] lg:!rounded-[0.6vw] flex items-center justify-center pl-[0.25vw] bg-dark"
+                  }
                 >
-                  <path
-                    d="M2 2L19.5 19.5L2 37"
-                    stroke={"#fffcf5"}
-                    stroke-width="5"
-                    className={"group-hover:stroke-green"}
-                  />
-                </svg>
+                  <svg
+                    width="24"
+                    height="39"
+                    viewBox="0 0 24 39"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="lg:!w-[1.875vw] w-[6.118vw] lg:!h-[1.667vw] h-[5.176vw]"
+                  >
+                    <path
+                      d="M2 2L19.5 19.5L2 37"
+                      stroke={"#fffcf5"}
+                      stroke-width="5"
+                      className={"group-hover:stroke-green"}
+                    />
+                  </svg>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          )
         )}
       </div>
       {network.address && (

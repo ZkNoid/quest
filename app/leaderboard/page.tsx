@@ -18,7 +18,7 @@ export default function Home() {
       <Header />
       <Section1 />
 
-      <Section4 />
+      <Section4 goToLeaderboardButton={false} />
       <Leaderboard />
 
       <Footer />
