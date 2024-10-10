@@ -8,7 +8,7 @@ export const authOptions: NextAuthOptions = {
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID as string,
       clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
-      authorization: `https://discord.com/oauth2/authorize?client_id=1293785390901104650&response_type=code&redirect_uri=${encodeURI(redirectUri)}%2Fapi%2Fauth%2Fcallback%2Fdiscord&scope=guilds`
+      authorization: `https://discord.com/api/oauth2/authorize?scope=identify+email&redirect_uri=${encodeURI(redirectUri)}`
     }),
   ],
   callbacks: {
