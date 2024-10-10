@@ -92,8 +92,8 @@ export const questTasks = [
         time: "3 min",
         points: 200,
         button: {
-          href: "https://app.zknoid.io",
-          text: "Go to Game Store",
+          href: "https://app.zknoid.io/lottery",
+          text: "Go to Lottery game",
         },
       },
       {
