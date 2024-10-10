@@ -78,7 +78,7 @@ export const progressRouter = createTRPCRouter({
 
       console.log("Session", session);
 
-      if (!session) return;
+      if (!session || !session.discord_access_token) return;
 
       if (
         !(await db.collection("statuses").findOne({
@@ -113,7 +113,7 @@ export const progressRouter = createTRPCRouter({
           {
             method: "GET",
             headers: {
-              Authorization: `Bearer ${session.access_token}`,
+              Authorization: `Bearer ${session.discord_access_token}`,
             },
           },
         ).then((res) => res.json())) as any[];
@@ -143,6 +143,78 @@ export const progressRouter = createTRPCRouter({
           );
         }
       }
+      return {
+        userAddress: input.userAddress,
+        section,
+      };
+    }),
+
+  checkTwitterSubscription: publicProcedure
+    .input(
+      z.object({
+        userAddress: z.string(),
+        subscribeRequested: z.boolean(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (!db) return;
+
+      const section = "SOCIAL TASKS";
+      const connectTaskId = 4;
+      const joinTaskId = 5;
+
+      const session: any = await getServerSession(authOptions);
+
+      console.log("Session", session);
+
+      if (!session || !session.twitter_access_token) return;
+
+      if (
+        !(await db.collection("statuses").findOne({
+          [`statuses.${section}.${connectTaskId}`]: true,
+          address: input.userAddress,
+        }))
+      ) {
+        await db.collection("statuses").updateOne(
+          { address: input.userAddress },
+          {
+            $set: {
+              user: session.user,
+              [`statuses.${section}.${connectTaskId}`]: true,
+            },
+            $inc: {
+              [`counter.${section}.${connectTaskId}`]: 1,
+            },
+          },
+          {
+            upsert: true,
+          },
+        );
+      }
+      if (
+        !(await db.collection("statuses").findOne({
+          [`statuses.${section}.${joinTaskId}`]: true,
+          address: input.userAddress,
+        }))
+      ) {
+        if (input.subscribeRequested) {
+          await db.collection("statuses").updateOne(
+            { address: input.userAddress },
+            {
+              $set: {
+                [`statuses.${section}.${joinTaskId}`]: true,
+              },
+              $inc: {
+                [`counter.${section}.${joinTaskId}`]: 1,
+              },
+            },
+            {
+              upsert: true,
+            },
+          );
+        }
+      }
+
       return {
         userAddress: input.userAddress,
         section,

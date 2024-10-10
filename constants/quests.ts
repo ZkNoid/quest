@@ -41,6 +41,17 @@ export const questTasks = [
         },
       },
       {
+        text: "Connect Twitter",
+        time: "1 min",
+        points: 50,
+        button: {
+          text: "Connect",
+          logic: () => {
+            signIn("twitter");
+          },
+        },
+      },
+      {
         text: "Subscribe to Twitter",
         time: "1 min",
         points: 100,

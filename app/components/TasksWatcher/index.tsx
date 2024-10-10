@@ -8,6 +8,7 @@ export default function TasksWatcher() {
   const network = useNetworkStore();
   const progress = api.progress.setSolvedQuests.useMutation();
   const checkDiscord = api.progress.checkDiscordSubscription.useMutation();
+  const checkTwitter = api.progress.checkTwitterSubscription.useMutation();
 
   const { data: session } = useSession();
 
@@ -20,14 +21,25 @@ export default function TasksWatcher() {
       });
     }
   }, [network.address]);
-  
 
   useEffect(() => {
-    if (!session || !network.address) return
-    console.log('Discord data', session);
-    checkDiscord.mutate({
-      userAddress: network.address!
-    })
+    console.log('Session', session)
+    if (!session || !network.address) return;
+    if ((session as any).discord_access_token) {
+      console.log("Discord data", session);
+      checkDiscord.mutate({
+        userAddress: network.address!,
+      });
+    }
+
+    if ((session as any).twitter_access_token) {
+      console.log("Twitter data", session);
+      checkTwitter.mutate({
+        userAddress: network.address!,
+        subscribeRequested: false
+      });
+    }
+
   }, [session, network.address]);
 
   return <></>;
