@@ -3,7 +3,17 @@ import Discord from "./assets/discord.svg";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useNetworkStore, walletInstalled } from "@/lib/stores/network";
 export default function Header() {
+  const networkStore = useNetworkStore();
+
+  useEffect(() => {
+    if (!walletInstalled()) return;
+
+    networkStore.connectWallet(true);
+  }, []);
+
   return (
     <div className="w-full flex-row justify-between py-[2.06vw] hidden lg:!flex">
       <Image
