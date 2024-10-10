@@ -9,7 +9,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import TasksWatcher from "../TasksWatcher";
 import { SessionProvider } from "next-auth/react";
-import { questTasks } from '@/constants/quests'
+import { questTasks } from "@/constants/quests";
+import { useClickedLinks } from "@/lib/stores/clickedLinks";
 
 const ButtonContent = ({ text }: { text: string }) => {
   return (
@@ -92,6 +93,8 @@ const TaskSection = ({
   //       });
   //   });
   // }, []);
+
+  const clickedLinks = useClickedLinks();
 
   return (
     <SessionProvider>
@@ -266,7 +269,13 @@ const TaskSection = ({
                         ) : (
                           <Link
                             href={x.button.href!}
-                            onClick={() => x.button?.logic?.()}
+                            onClick={() => {
+                              clickedLinks.onClickedLink({
+                                section: name,
+                                id: i + 1,
+                              });
+                              x.button?.logic?.();
+                            }}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={"w-fit group"}
