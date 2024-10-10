@@ -212,7 +212,7 @@ const TaskSection = ({
     time: string;
     points: number;
     description?: string;
-    button?: { href: string; text: string; logic?: () => void };
+    button?: { href?: string; text: string; logic?: () => void };
   }[];
   last?: boolean;
 }) => {
@@ -420,7 +420,7 @@ const TaskSection = ({
                           </div>
                         ) : (
                           <Link
-                            href={x.button.href}
+                            href={x.button.href!}
                             onClick={() => x.button?.logic?.()}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -639,7 +639,7 @@ const TaskSection = ({
                         )}
                         {x.button && !statuses[i] && (
                           <Link
-                            href={x.button.href}
+                            href={x.button.href!}
                             className={
                               "w-full lg:!w-fit group mt-[5vw] lg:!mt-0"
                             }

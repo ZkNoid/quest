@@ -13,7 +13,7 @@ import Leaderboard from "@/app/components/Leaderboard";
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const page = searchParams.get("page");
+  const page = searchParams?.get("page");
   return (
     <main className="flex min-h-screen flex-col items-center max-w-[100vw] overflow-clip">
       <Topbar />

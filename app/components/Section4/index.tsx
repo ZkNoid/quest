@@ -80,7 +80,7 @@ export const Section4 = () => {
     },
   );
   const searchParams = useSearchParams();
-  const page = searchParams.get("page");
+  const page = searchParams?.get("page");
 
   const quests = [
     ...getQuestsArray(progressRouter.data?.quests?.SOCIAL ?? [], 5),
