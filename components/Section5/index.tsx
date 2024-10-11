@@ -122,7 +122,7 @@ const TaskSection = ({
                     <div
                       className={cn(
                         "w-[1px] bg-green absolute left-[0.937vw]",
-                        i != 0 ? "top-0" : "top-[1.5vw]",
+                        i != 0 ? "top-0" : "top-[3vw]",
                         i == tasks.length - 1
                           ? "h-1/2"
                           : "h-[calc(100%+2.5vw)]",
