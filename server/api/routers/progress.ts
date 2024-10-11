@@ -54,6 +54,13 @@ export const progressRouter = createTRPCRouter({
           upsert: true,
         },
       );
+
+      try {
+        await fetch("/api/leaderboard");
+      } catch (e) {
+        console.log("Error while fetching leaderboard api", e);
+      }
+
       return {
         userAddress: input.userAddress,
         section: input.section,
@@ -75,8 +82,6 @@ export const progressRouter = createTRPCRouter({
       const joinTaskId = 3;
 
       const session: any = await getServerSession(authOptions);
-
-      console.log("Session", session);
 
       if (!session || !session.discord_access_token) return;
 
@@ -164,8 +169,6 @@ export const progressRouter = createTRPCRouter({
       const joinTaskId = 5;
 
       const session: any = await getServerSession(authOptions);
-
-      console.log("Session", session);
 
       if (!session || !session.twitter_access_token) return;
 

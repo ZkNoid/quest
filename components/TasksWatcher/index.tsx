@@ -53,7 +53,6 @@ export default function TasksWatcher() {
   }, [network.address]);
 
   useEffect(() => {
-    console.log("Session", session);
     if (!session || !network.address) return;
     if ((session as any).discord_access_token) {
       console.log("Discord data", session);

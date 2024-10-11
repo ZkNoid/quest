@@ -30,22 +30,6 @@ export const leaderboardRouter = createTRPCRouter({
   //     }),
   //   )
   //   .mutation(async ({ input }) => {
-  //     await db.collection("quest-leaderboard").updateOne(
-  //       {
-  //         userAddress: input.userAddress,
-  //         score: {
-  //           tasksSectionName: input.score.tasksSectionName,
-  //           taskIndex: input.score.taskIndex,
-  //         },
-  //       },
-  //       {
-  //         $push: {
-  //           score: input.score,
-  //         },
-  //       },
-  //       {
-  //         upsert: true,
-  //       },
-  //     );
+  //     
   //   }),
 });

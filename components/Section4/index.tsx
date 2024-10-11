@@ -8,10 +8,8 @@ import Image from "next/image";
 import { ConnectWallet, WalletUpdater } from "../ConnectWallet";
 import { useNetworkStore } from "@/lib/stores/network";
 import { api } from "@/trpc/react";
-import { getQuestsArray } from "@/app/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { questTasks, TOTAL_QUEST_POINTS } from "@/constants/quests";
 
 const Progress = ({ step: stepRaw }: { step: number }) => {
@@ -88,9 +86,6 @@ export const Section4 = ({
   useEffect(() => {
     progressRouter.refetch();
   }, [network.address]);
-
-  const searchParams = useSearchParams();
-  const page = searchParams?.get("page");
 
   const [userScore, setUserScore] = useState(0);
 
