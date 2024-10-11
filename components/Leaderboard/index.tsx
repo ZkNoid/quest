@@ -40,7 +40,12 @@ export default function Leaderboard() {
   useEffect(() => {
     if (getLeaderboardQuery?.data?.leaderboard) {
       // @ts-ignore
-      setLeaderboard(getLeaderboardQuery.data.leaderboard);
+      setLeaderboard(
+        getLeaderboardQuery.data.leaderboard.map((x) => ({
+          userAddress: x.userAddress,
+          score: x.scores.at(-1)
+        })),
+      );
     }
   }, [getLeaderboardQuery.data]);
 
@@ -81,7 +86,10 @@ export default function Leaderboard() {
           Back
         </span>
       </Link>
-      <div className={"flex flex-row justify-between items-center w-full"} id="leaderboard">
+      <div
+        className={"flex flex-row justify-between items-center w-full"}
+        id="leaderboard"
+      >
         <span
           className={"text-[9.412vw] lg:!text-[3.646vw] font-arame text-white"}
         >

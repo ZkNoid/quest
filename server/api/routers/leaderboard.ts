@@ -18,18 +18,4 @@ export const leaderboardRouter = createTRPCRouter({
         .collection("quest-leaderboard")
         .findOne({ userAddress: input.userAddress });
     }),
-  // setLeaderboardItem: publicProcedure
-  //   .input(
-  //     z.object({
-  //       userAddress: z.string(),
-  //       score: z.object({
-  //         tasksSectionName: z.string(),
-  //         taskIndex: z.number(),
-  //         points: z.number(),
-  //       }),
-  //     }),
-  //   )
-  //   .mutation(async ({ input }) => {
-  //     
-  //   }),
 });
