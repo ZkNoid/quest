@@ -4,10 +4,10 @@ const ticketNumber = 0;
 const ticketWin = 0;
 
 const tweetTextBuy =
-  `Just bought a lottery ticket in @ZkNoid Lottery on @MinaProtocol!\n` +
+  `Just bought a lottery ticket in @ZkNoid Lottery on @MinaProtocol!%0A` +
   `Try your luck in the verifiably honest Lottery: https://app.zknoid.io/games/lottery/global`;
 
-const tweetTextWin = `I won $MINA in @ZkNoid Lottery!\n
+const tweetTextWin = `I won $MINA in @ZkNoid Lottery!%0A
 Try your chance to hit the jackpot too: https://app.zknoid.io/games/lottery/global`;
 
 export const questTasks = [
