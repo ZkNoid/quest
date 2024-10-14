@@ -558,10 +558,7 @@ export const Section5 = () => {
         </div>
       </div>
       <div className="flex w-full flex-col gap-[10.588vw] lg:!gap-[4.375vw]">
-      <div className="w-full flex items-center text-[2vw] gap-[0.625vw]">
-        Quest coming soon...
-        </div>
-        {/* {questTasks.map((item, index) => (
+        {questTasks.map((item, index) => (
           <TaskSection
             key={index}
             id={index + 1}
@@ -569,7 +566,7 @@ export const Section5 = () => {
             tasks={item.tasks}
             last={item.last}
           />
-        ))} */}
+        ))}
       </div>
     </section>
   );
