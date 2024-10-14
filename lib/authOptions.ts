@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import DiscordProvider from "next-auth/providers/discord";
 import TwitterProvider from "next-auth/providers/twitter";
 
-const redirectUri = process.env.VERCEL == '1' ? 'https://zknoid-quest.vercel.app' : 'http://localhost:3000'
+const redirectUri = process.env.VERCEL == '1' ? 'https://quest.zknoid.io' : 'http://localhost:3000'
 export const authOptions: NextAuthOptions = {
   providers: [
     DiscordProvider({
