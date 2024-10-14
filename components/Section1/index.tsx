@@ -30,7 +30,9 @@ export function Section1() {
   const getTimeLeft = () => {
     return Interval.fromDateTimes(
       DateTime.now(),
-      DateTime.fromSQL("2024-10-14 00:00:00"),
+      DateTime.fromSQL("2024-10-14 18:00:00", {
+        zone: 'Europe/Istanbul'
+      }),
     )
       .toDuration(["days", "hours", "minutes", "seconds"])
       .toObject();
