@@ -79,7 +79,7 @@ const TaskSection = ({
     progressRouter.refetch();
   }, [network.address]);
 
-  const statuses = Object.values(progressRouter.data?.quests?.[name] || {});
+  const statuses = Object.values(progressRouter.data?.quests?.[name] || {}).map(x => x > 0);
 
   // const setLeaderboardItemMutation =
   //   api.leaderboard.setLeaderboardItem.useMutation();
@@ -98,8 +98,10 @@ const TaskSection = ({
   //   });
   // }, []);
 
-  const clickedLinks = useClickedLinks();
+  
 
+  const clickedLinks = useClickedLinks();
+  console.log('Statuses', statuses)
   return (
     <SessionProvider>
       <div>
