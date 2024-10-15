@@ -102,6 +102,8 @@ const TaskSection = ({
 
   const clickedLinks = useClickedLinks();
   console.log('Statuses', statuses)
+  const lastOpenedTask = statuses.lastIndexOf(true) + 2;
+  
   return (
     <SessionProvider>
       <div>
@@ -114,9 +116,9 @@ const TaskSection = ({
             {name}
           </div>
           <div className="flex flex-col gap-2 font-roboto items-end w-full">
-            {tasks.map(
+            {tasks.slice(0, lastOpenedTask).map(
               (x, i) =>
-                (statuses[i - 1] || i == 0) && (
+                (
                   <div
                     key={i}
                     className="w-full h-full flex flex-row justify-between items-center relative"
