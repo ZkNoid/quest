@@ -55,12 +55,6 @@ export const progressRouter = createTRPCRouter({
         },
       );
 
-      try {
-        await fetch("/api/leaderboard");
-      } catch (e) {
-        console.log("Error while fetching leaderboard api", e);
-      }
-
       return {
         userAddress: input.userAddress,
         section: input.section,
