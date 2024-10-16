@@ -51,7 +51,6 @@ export default function Leaderboard() {
 
   const filteredLeaderboard = leaderboard
     .sort((a, b) => b.score - a.score)
-    .slice(0, 11);
 
   return (
     <section className={"flex flex-col gap-[1vw] w-full px-[6.4vw] pt-[10vw]"}>
