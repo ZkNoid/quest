@@ -100,7 +100,7 @@ export const Section4 = ({
         console.log("Processing task prop", taskProp);
         const taskScore = progressRouter.data?.quests[prop][taskProp];
         console.log("Got task score", taskScore);
-        score += taskScore > 0 ? questTasks[sectionId].tasks[taskId].points : 0;
+        score += taskScore > 0 ? questTasks[sectionId].tasks[taskId]?.points || 0 : 0;
         taskId++;
       }
       sectionId++;

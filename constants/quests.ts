@@ -168,5 +168,5 @@ export const questTasks = [
 ];
 
 export const TOTAL_QUEST_POINTS = questTasks
-  .flatMap((x) => x.tasks.map((x) => x.points))
+  .flatMap((x) => x.tasks.map((x) => x?.points || 0))
   .reduce((x, y) => x + y, 0);

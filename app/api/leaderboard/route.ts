@@ -22,7 +22,7 @@ const handler = async (req: NextRequest) => {
       let taskId = 0;
       for (let taskProp in questSectionName) {
         const taskScore = solvedQuests[prop][taskProp];
-        score += taskScore > 0 ? questTasks[sectionId].tasks[taskId].points : 0;
+        score += taskScore > 0 ? questTasks[sectionId].tasks[taskId]?.points || 0 : 0;
         taskId++;
       }
       sectionId++;

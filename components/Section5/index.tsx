@@ -236,7 +236,7 @@ const TaskSection = ({
                                 />
                               </svg>
                               <span className={"text-[0.833vw] font-roboto"}>
-                                Task worth: {x.points} points
+                                Task worth: {x?.points} points
                               </span>
                             </div>
                           </div>
