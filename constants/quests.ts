@@ -1,8 +1,5 @@
 import { signIn, signOut } from "next-auth/react";
 
-const ticketNumber = 0;
-const ticketWin = 0;
-
 const tweetTextBuy =
   `Just bought a lottery ticket in @ZkNoid Lottery on @MinaProtocol!%0A` +
   `Try your luck in the verifiably honest Lottery: https://app.zknoid.io/games/lottery/global`;
@@ -69,7 +66,7 @@ export const questTasks = [
         },
       },
       {
-        text: "Tweet about your first rewards claim ",
+        text: "Tweet about your first rewards claim",
         time: "1 min",
         points: 200,
         button: {
@@ -81,6 +78,10 @@ export const questTasks = [
         text: "Rate The Lottery game on the Website and give short feedback",
         time: "2 min",
         points: 100,
+        button: {
+          href: `https://app.zknoid.io/games/lottery/global?rating=forceModal`,
+          text: "Rate game",
+        },
       },
     ],
   },
