@@ -21,7 +21,7 @@ const ClockBlock = ({ number, label }: { number: number; label: string }) => {
 const TimerLabel = () => {
   return (
     <div className="bg-dark w-[75.294vw] lg:w-[50vw] h-[7.059vw] lg:!h-[3.26vw] rounded-[0.6vw] text-green font-arame flex items-center justify-center text-[4.235vw] lg:!text-[2.344vw]">
-      TESTNET ENDS IN
+      TESTNET ENDS October 28th
     </div>
   );
 };
