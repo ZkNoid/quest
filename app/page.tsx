@@ -24,10 +24,11 @@ export default function Home() {
       <Header />
       <Section1 />
       <Section2 />
+      <Section3 />
+      <Section4 goToLeaderboardButton={true} />
+
       {!isQuestEnd && (
         <>
-          <Section3 />
-          <Section4 goToLeaderboardButton={true} />
           <Section5 />
         </>
       )}
