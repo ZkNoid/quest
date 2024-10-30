@@ -9,6 +9,8 @@ const handler = async (req: NextRequest) => {
   const statuses = await db.collection("statuses").find({}).toArray();
   const scores = await db.collection("quest-leaderboard").find({}).toArray();
 
+  let userStatuses = {} as any;
+
   for (const status of statuses) {
     const solvedQuests = status.counter as Record<
       string,
@@ -22,31 +24,35 @@ const handler = async (req: NextRequest) => {
       let taskId = 0;
       for (let taskProp in questSectionName) {
         const taskScore = solvedQuests[prop][taskProp];
-        score += taskScore > 0 ? questTasks[sectionId].tasks[taskId]?.points || 0 : 0;
+        score +=
+          taskScore > 0 ? questTasks[sectionId].tasks[taskId]?.points || 0 : 0;
         taskId++;
       }
       sectionId++;
     }
 
-    if (
-      scores.find((x) => x.userAddress == status.address)?.scores?.at(-1) !=
-      score
-    ) {
-      await db.collection("quest-leaderboard").updateOne(
-        {
-          userAddress: status.address,
-        },
-        {
-          // @ts-ignore
-          $push: {
-            scores: score,
-            timestemps: Date.now(),
+    if (score > (userStatuses[status.address] || 0)) {
+      userStatuses[status.address] = score;
+      if (
+        scores.find((x) => x.userAddress == status.address)?.scores?.at(-1) !=
+        score
+      ) {
+        await db.collection("quest-leaderboard").updateOne(
+          {
+            userAddress: status.address,
           },
-        },
-        {
-          upsert: true,
-        },
-      );
+          {
+            // @ts-ignore
+            $push: {
+              scores: score,
+              timestemps: Date.now(),
+            },
+          },
+          {
+            upsert: true,
+          },
+        );
+      }
     }
   }
   return NextResponse.json({ status: "ok" });
