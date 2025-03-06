@@ -1,4 +1,6 @@
 import Link from "next/link";
+import someImg from "@/public/1.png";
+import Image from "next/image";
 
 export const Socials = ({ showGithub }: { showGithub: boolean }) => {
   return (
@@ -118,6 +120,11 @@ export const Socials = ({ showGithub }: { showGithub: boolean }) => {
           </div>
         </Link>
       ))}
+      <Image
+        src={someImg}
+        alt={"image"}
+        className={"w-[1.042vw] h-[1.042vw]"}
+      />
     </div>
   );
 };
